@@ -35,7 +35,7 @@ const DaContainer = () => {
       <Route exact path = "/das/new" render={() => {
         return <DaForm handlePost={handlePost}/>
       }}/>
-      <Route render={() => {
+      <Route path = "/das" render={() => {
         return <DaList das={das}/>
       }} />
       </Switch>
