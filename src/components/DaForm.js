@@ -31,7 +31,13 @@ const DaForm = ({handlePost}) => {
         <>
         <h3>Create A Da</h3>
         <form onSubmit={handleSubmit}>
+
             <input type="text" placeholder="Name" name="name" onChange={handleChange} value={stateDa.name} />
+
+            {/* <input type="text" placeholder="Bio" name="bio" onChange={handleChange} value={stateDa.bio} /> */}
+            {/* <input class="photo-upload" type="file" onchange="readURL{this}" accept="Image/" onChange={handleChange} value={stateDa.photo} /> */}
+
+
             <button type="submit">Save</button>
         </form>
         </>

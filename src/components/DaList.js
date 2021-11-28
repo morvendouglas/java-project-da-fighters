@@ -5,11 +5,9 @@ const DaList = ({das}) => {
 
 	const dasNodes = das.map((da, index) => {
 	  return (
-	    <li key={index}>
-	    <div>
-	    <Da da={da} />
-	    </div>
-	    </li>
+	    	<li key={index}>
+	    		<Da da={da} />
+	   		</li>
 	  )
 	})
 
