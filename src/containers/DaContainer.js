@@ -49,7 +49,6 @@ const DaContainer = () => {
     }
     const randomIndex = Math.floor(Math.random() * copiedDas.length);
     const randomDa = copiedDas[randomIndex];
-    console.log(randomDa)
     setComputerDa(randomDa)
     }
 
