@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import CountUp, { useCountUp } from 'react-countup';
+
 
 const FightScreen = ({ playerDa, computerDa }) => {
 
     const [computerHealth, setComputerHealth] = useState(100);
     const [playerHealth, setPlayerHealth] = useState(100);
-
+    const [loading, setLoading] = useState(false);
 
     const getRandomNumber = function (min, max) {
         return Math.floor(Math.random() * ((max - min) + 1) + min);
@@ -14,13 +16,16 @@ const FightScreen = ({ playerDa, computerDa }) => {
         if (playerDa.daType === "BUFFDA") {
             const health = computerDa.currentHealth -= getRandomNumber(18, 30)
             setComputerHealth(health);
+       
         } else if (playerDa.daType === "AVERAGEDA") {
             const health = computerDa.currentHealth -= getRandomNumber(23, 25)
             setComputerHealth(health);
+
         } else {
             const health = computerDa.currentHealth -= getRandomNumber(18, 25)
             setComputerHealth(health);
         }
+
         computerTurn();
     }
 
@@ -74,6 +79,15 @@ const FightScreen = ({ playerDa, computerDa }) => {
     }
 
 
+  const onStart = () => {
+    setLoading(true);
+  };
+
+  const onEnd = () => {
+    setLoading(false);
+  };
+
+
     return (
         <>
             <div>
@@ -81,7 +95,6 @@ const FightScreen = ({ playerDa, computerDa }) => {
                 <ul>
                     <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
                     <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
-                    <li><button onClick={handleHeal}>{playerDa.healName}</button></li>
                     <li><button>{playerDa.specialName}</button></li>
                     <li>{playerHealth}</li>
                 </ul>
@@ -92,12 +105,23 @@ const FightScreen = ({ playerDa, computerDa }) => {
                     <li><button>{computerDa.attackOneName}</button></li>
                     <li><button>{computerDa.attackTwoName}</button></li>
                     <li><button>{computerDa.specialName}</button></li>
-                    <li>{computerHealth}</li>
                 </ul>
+                    <CountUp
+                    start={100}
+                    end={computerHealth}
+                    duration="3"
+                    onStart={onStart}
+                    onEnd={onEnd}
+            />
             </div>
         </>
     )
 
 }
+
+
+
+
+
 
 export default FightScreen;
