@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Da = ({da}) => {
+const Da = ({ da }) => {
 
-  if (!da){
+  if (!da) {
     return <p>Loading...</p>
   }
 
   return (
     <>
-    {da.name}
+      <button>{da.name}</button>
     </>
   )
 }

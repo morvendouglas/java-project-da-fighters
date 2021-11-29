@@ -1,47 +1,55 @@
-import React, {useState} from 'react';
-import Request from '../helpers/request';
+import React, { useState } from 'react';
 
-const DaForm = ({handlePost}) => {
+const DaForm = ({ handlePost }) => {
 
     const [stateDa, setStateDa] = useState(
         {
             "name": "",
-            "daType": "BUFFDA",
-            "attackOneName": "Buff Attack One",
-            "attackTwoName": "Buff Attack Two",
-            "specialName": "Buff Special Attack",
+            "daType": "",
+            "attackOneName": "",
+            "attackTwoName": "",
+            "specialName": "",
             "startingHealth": 100,
-            "currentHealth": 100
+            "currentHealth": 100,
+            "photo": "",
+            "bio": ""
         }
     )
 
-    const handleChange = function(event){
+    console.log(stateDa)
+
+    const handleChange = function (event) {
         let propertyName = event.target.name;
-        let copiedDa = {...stateDa}
+        let copiedDa = { ...stateDa }
         copiedDa[propertyName] = event.target.value;
         setStateDa(copiedDa)
     }
 
-    const handleSubmit = function(event){
+    const handleSubmit = function (event) {
         event.preventDefault();
-        handlePost(stateDa); 
+        handlePost(stateDa);
     }
 
-    return(
+    return (
         <>
-        <h3>Create A Da</h3>
-        <form onSubmit={handleSubmit}>
-
-            <input type="text" placeholder="Name" name="name" onChange={handleChange} value={stateDa.name} />
-
-            {/* <input type="text" placeholder="Bio" name="bio" onChange={handleChange} value={stateDa.bio} /> */}
-            {/* <input class="photo-upload" type="file" onchange="readURL{this}" accept="Image/" onChange={handleChange} value={stateDa.photo} /> */}
-
-
-            <button type="submit">Save</button>
-        </form>
+            <h3>Create A Da</h3>
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Name" name="name" onChange={handleChange} value={stateDa.name} />
+                <input type="text" placeholder="Bio" name="bio" onChange={handleChange} value={stateDa.bio} />
+                <input type="file" name="photo" accept="image/png, image/jpeg" onChange={handleChange} enctype="multipart/form-data"/>
+                <select name="daType" onChange={handleChange} value={stateDa.daType} >
+                    <option defaultValue='select-a-da-type'>Select a Da Type</option>
+                    <option value="BUFFDA">BUFF DA</option>
+                    <option value="AVERAGEDA">AVEREGE DA</option>
+                    <option value="SOFDA">SOFT DA</option>
+                </select>
+                <input type="text" placeholder="First Attack" name="attackOneName" onChange={handleChange} value={stateDa.attackOneName} />
+                <input type="text" placeholder="Second Attack" name="attackTwoName" onChange={handleChange} value={stateDa.attackTwoName} />
+                <input type="text" placeholder="Special Attack" name="specialName" onChange={handleChange} value={stateDa.specialName} />
+                <button type ="submit">Save</button>
+            </form>
         </>
-  
+
     )
 }
 
