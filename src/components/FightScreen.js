@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const FightScreen = ({ playerDa, computerDa }) => {
 
     const [computerHealth, setComputerHealth] = useState(100);
+    const [playerHealth, setPlayerHealth] = useState(100);
 
 
     const getRandomNumber = function (min, max) {
@@ -38,7 +39,7 @@ return (
                 <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
                 <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
                 <li><button>{playerDa.specialName}</button></li>
-                <li>{playerDa.currentHealth}</li>
+                <li>{playerHealth}</li>
             </ul>
         </div>
         <div>
