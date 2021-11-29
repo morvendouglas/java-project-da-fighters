@@ -1,14 +1,15 @@
 import React from 'react';
 
-const Da = ({ da }) => {
+const Da = ({ da, onDaClicked }) => {
 
-  if (!da) {
-    return <p>Loading...</p>
+
+  const handleClick = function(){
+    onDaClicked(da)
   }
 
   return (
     <>
-      <button>{da.name}</button>
+      <button onClick={handleClick}>{da.name}</button>
     </>
   )
 }
