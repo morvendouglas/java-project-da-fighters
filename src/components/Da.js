@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Da = ({ da, onDaClicked }) => {
-
+  
 
   const handleClick = function(){
     onDaClicked(da)
