@@ -244,43 +244,64 @@ const FightScreen = ({ playerDa, computerDa }) => {
         }
     };
 
-    return (
-        <>
-            <div>
-                {playerDa.name}
-                <ul>
-                    <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
-                    <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
-                    <li><button onClick={handleHealClick}>{playerDa.healName}</button></li>
-                    <li><button onClick={handleSpecialClick}>{playerDa.specialName}</button></li>
-                    <li><CountUp
-                        className="health"
-                        start={previousPlayerHealth}
-                        end={playerHealth}
-                        duration="1"
-                    />
-                    </li>
-                </ul>
-            </div>
-            <div>
-                {computerDa.name}
-                <ul>
-                    <li><button>{computerDa.attackOneName}</button></li>
-                    <li><button>{computerDa.attackTwoName}</button></li>
-                    <li><button>{computerDa.healName}</button></li>
-                    <li><button>{computerDa.specialName}</button></li>
-                    <li><CountUp
-                        className="health"
-                        start={previousComputerHealth}
-                        end={computerHealth}
-                        duration="1"
-                    />
-                    </li>
-                </ul>
-            </div>
-        </>
-    )
-
+    if (gameFinished === false) {
+        return (
+            <>
+                <div>
+                    {playerDa.name}
+                    <ul>
+                        <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
+                        <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
+                        <li><button onClick={handleHealClick}>{playerDa.healName}</button></li>
+                        <li><button onClick={handleSpecialClick}>{playerDa.specialName}</button></li>
+                        <li><CountUp
+                            className="health"
+                            start={previousPlayerHealth}
+                            end={playerHealth}
+                            duration="1"
+                        />
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    {computerDa.name}
+                    <ul>
+                        <li><button>{computerDa.attackOneName}</button></li>
+                        <li><button>{computerDa.attackTwoName}</button></li>
+                        <li><button>{computerDa.healName}</button></li>
+                        <li><button>{computerDa.specialName}</button></li>
+                        <li><CountUp
+                            className="health"
+                            start={previousComputerHealth}
+                            end={computerHealth}
+                            duration="1"
+                        />
+                        </li>
+                    </ul>
+                </div>
+            </>
+        )
+    } else {
+        if (computerHealth <= 0) {
+            return (
+                <>
+                    <div className="health">
+                        <h1>{playerDa.name} smashed {computerDa.name}</h1>
+                        <h2>You Win !</h2>
+                    </div>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <div className="health">
+                        <h1>{computerDa.name} wrecked {playerDa.name}</h1>
+                        <h2>You Lose !</h2>
+                    </div>
+                </>
+            )
+        }
+    }
 }
 
 export default FightScreen;
