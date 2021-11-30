@@ -60,9 +60,6 @@ const DaContainer = () => {
         {/* <Route exact path="/das/new" render={() => {
           return <DaForm handlePost={handlePost} />
         }} /> */}
-
-        
-
         <Route path="/select" render={() => {
           return <DaList das={das} onDaClicked={onDaClicked} />
         }} />

@@ -1,13 +1,19 @@
 .main_logo{
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;  }
 
 .press_start{
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;  }
 
 body {
     background-color: black;
+}
+
+.audio_player{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;  
 }
