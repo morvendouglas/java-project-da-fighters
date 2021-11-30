@@ -198,7 +198,6 @@ const FightScreen = ({ playerDa, computerDa }) => {
         }
     };
 
-
     return (
         <>
             <div>
