@@ -4,7 +4,7 @@ import DaList from '../components/DaList';
 import DaForm from '../components/DaForm';
 import Request from '../helpers/request';
 import FightScreen from '../components/FightScreen';
-import Da from '../components/Da';
+import Home from '../components/Home';
 
 
 const DaContainer = () => {
@@ -61,9 +61,7 @@ const DaContainer = () => {
           return <DaForm handlePost={handlePost} />
         }} /> */}
 
-        <Route path="/" render ={() => {
-          return <Da/>
-        }} />
+        
 
         <Route path="/select" render={() => {
           return <DaList das={das} onDaClicked={onDaClicked} />

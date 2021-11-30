@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import DaContainer from './DaContainer';
+import Home from '../components/Home';
+
 
 const MainContainer = () => {
 
@@ -8,6 +10,9 @@ const MainContainer = () => {
     <Router>
       <Switch>
         {/* <Route exact path="/das/new" component={DaContainer} /> */}
+        <Route path="/" render ={() => {
+          return <Home/>
+        }} />
         <Route path="/select" component={DaContainer} />
         <Route path="/fight" component={DaContainer} />
       </Switch>
