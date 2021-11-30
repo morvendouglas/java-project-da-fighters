@@ -4,6 +4,8 @@ const FightScreen = ({ playerDa, computerDa }) => {
 
     const [computerHealth, setComputerHealth] = useState(100);
     const [playerHealth, setPlayerHealth] = useState(100);
+    const [computerSpecialUsed, setComputerSpecialUsed] = useState(false);
+    const [playerSpecialUsed, setPlayerSpecialUsed] = useState(false);
 
     const getRandomNumber = function (min, max) {
         return Math.floor(Math.random() * ((max - min) + 1) + min);
@@ -19,7 +21,7 @@ const FightScreen = ({ playerDa, computerDa }) => {
         } else {
             damage = getRandomNumber(18, 25)
         }
-        const health = computerDa.currentHealth -= damage;
+        const health = computerHealth - damage;
         setComputerHealth(health)
         console.log("player hit computer for : " + damage);
         computerTurn();
@@ -28,31 +30,60 @@ const FightScreen = ({ playerDa, computerDa }) => {
 
     const handleAttack2Click = function () {
         let damage = getRandomNumber(10, 35);
-        const health = computerDa.currentHealth -= damage;
+        const health = computerHealth - damage;
         setComputerHealth(health);
         computerTurn();
         console.log("player hit computer for : " + damage);
     }
 
 
-    const handleHeal = function () {
+    const handleHealClick = function () {
         let heal = 0;
         if (playerDa.daType === "SOFTDA") {
             heal = getRandomNumber(23, 25)
         } else {
             heal = getRandomNumber(18, 25)
         }
-        if ((playerDa.currentHealth + heal) >= 100) {
+        if ((playerHealth + heal) >= 100) {
             setPlayerHealth(100);
+        } else if (playerHealth <= 30) {
+            heal = getRandomNumber(24, 25)
+            const health = playerHealth + heal;
+            setPlayerHealth(health)
         } else {
-            const health = playerDa.currentHealth += heal;
+            const health = playerHealth + heal;
             setPlayerHealth(health);
         }
         computerTurn();
         console.log("player healed for : " + heal);
     }
 
+    const handleSpecialClick = function () {
+        if (playerSpecialUsed === false) {
+            let opponentDamage = 45;
+            let selfDamage = 25;
+            const specialOutcome = [opponentDamage, opponentDamage, selfDamage]
+            const specialNumber = Math.floor(Math.random() * 3);
+            if (specialOutcome[specialNumber] === opponentDamage) {
+                const health = computerHealth - opponentDamage;
+                setComputerHealth(health);
+                setPlayerSpecialUsed(true);
+                computerTurn();
+                console.log("player hit computer for : " + opponentDamage);
+            } else if (specialOutcome[specialNumber] === selfDamage) {
+                const health = playerHealth - selfDamage;
+                setPlayerHealth(health);
+                setPlayerSpecialUsed(true);
+                computerTurn();
+                console.log("player hit themselves for : " + selfDamage);
+            }
+        } else {
+            return null;
+        }
+    }
+
     const computerTurn = function () {
+
         const Attack1 = function () {
             let damage = 0;
             if (computerDa.daType === "BUFFDA") {
@@ -62,13 +93,13 @@ const FightScreen = ({ playerDa, computerDa }) => {
             } else {
                 damage = getRandomNumber(18, 25)
             }
-            const health = playerDa.currentHealth -= damage;
+            const health = playerHealth - damage;
             setPlayerHealth(health)
             console.log("computer hit player for : " + damage);
         }
         const Attack2 = function () {
             let damage = getRandomNumber(10, 35);
-            const health = playerDa.currentHealth -= damage;
+            const health = playerHealth - damage;
             setPlayerHealth(health);
             console.log("computer hit player for : " + damage);
         }
@@ -79,20 +110,92 @@ const FightScreen = ({ playerDa, computerDa }) => {
             } else {
                 heal = getRandomNumber(18, 25)
             }
-            if ((computerDa.currentHealth + heal) >= 100) {
+            if ((computerHealth + heal) >= 100) {
                 setComputerHealth(100);
+            } else if (playerHealth <= 30) {
+                heal = getRandomNumber(24, 25)
+                const health = playerHealth + heal;
+                setPlayerHealth(health)
             } else {
-                const health = computerDa.currentHealth += heal;
+                const health = computerHealth + heal;
                 setComputerHealth(health);
             }
             console.log("computer healed for : " + heal);
         }
-
-        const randomMove = [Attack1, Attack2, Heal]
-        const randomNumber = Math.floor(Math.random() * 3);
-        setTimeout(function () {
-            randomMove[randomNumber]()
-        }, 1000)
+        const Special = function () {
+            let opponentDamage = 45;
+            let selfDamage = 25;
+            const specialOutcome = [opponentDamage, opponentDamage, selfDamage]
+            const specialNumber = Math.floor(Math.random() * 3);
+            if (specialOutcome[specialNumber] === opponentDamage) {
+                const health = computerHealth - opponentDamage;
+                setPlayerHealth(health);
+                setComputerSpecialUsed(true);
+                console.log("computer hit player for : " + opponentDamage);
+            } else if (specialOutcome[specialNumber] === selfDamage) {
+                const health = computerHealth - selfDamage;
+                setComputerHealth(health);
+                setComputerSpecialUsed(true);
+                console.log("computer hit themselves for : " + selfDamage);
+            }
+        }
+        if (computerHealth >= 80) {
+            if (computerSpecialUsed === false) {
+                const randomMove = [Attack1, Attack2, Special]
+                const randomNumber = Math.floor(Math.random() * 3);
+                setTimeout(function () {
+                    randomMove[randomNumber]()
+                }, 1000)
+            } else {
+                const randomMove = [Attack1, Attack2]
+                const randomNumber = Math.floor(Math.random() * 2);
+                setTimeout(function () {
+                    randomMove[randomNumber]()
+                }, 1000)
+            }
+        } else if (computerHealth >= 60) {
+            if (computerSpecialUsed === false) {
+                const randomMove = [Attack1, Attack2, Heal, Special]
+                const randomNumber = Math.floor(Math.random() * 4);
+                setTimeout(function () {
+                    randomMove[randomNumber]()
+                }, 1000)
+            } else {
+                const randomMove = [Attack1, Attack2, Heal]
+                const randomNumber = Math.floor(Math.random() * 3);
+                setTimeout(function () {
+                    randomMove[randomNumber]()
+                }, 1000)
+            }
+        } else if (computerHealth >= 40) {
+            if (computerSpecialUsed === false) {
+                const randomMove = [Attack1, Attack2, Heal, Heal, Special]
+                const randomNumber = Math.floor(Math.random() * 5);
+                setTimeout(function () {
+                    randomMove[randomNumber]()
+                }, 1000)
+            } else {
+                const randomMove = [Attack1, Attack2, Heal, Heal]
+                const randomNumber = Math.floor(Math.random() * 4);
+                setTimeout(function () {
+                    randomMove[randomNumber]()
+                }, 1000)
+            }
+        } else if (computerHealth <= 30) {
+            if (computerSpecialUsed === false) {
+                const randomMove = [Attack1, Attack2, Heal, Heal, Heal, Heal, Special]
+                const randomNumber = Math.floor(Math.random() * 7);
+                setTimeout(function () {
+                    randomMove[randomNumber]()
+                }, 1000)
+            } else {
+                const randomMove = [Attack1, Attack2, Heal, Heal, Heal, Heal]
+                const randomNumber = Math.floor(Math.random() * 6);
+                setTimeout(function () {
+                    randomMove[randomNumber]()
+                }, 1000)
+            }
+        }
     };
 
 
@@ -103,8 +206,8 @@ const FightScreen = ({ playerDa, computerDa }) => {
                 <ul>
                     <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
                     <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
-                    <li><button onClick={handleHeal}>{playerDa.healName}</button></li>
-                    <li><button>{playerDa.specialName}</button></li>
+                    <li><button onClick={handleHealClick}>{playerDa.healName}</button></li>
+                    <li><button onClick={handleSpecialClick}>{playerDa.specialName}</button></li>
                     <li>{playerHealth}</li>
                 </ul>
             </div>
