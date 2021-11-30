@@ -1,1 +1,13 @@
+.main_logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  }
 
+.press_start{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  }
+
+body {
+    background-color: black;
+}
