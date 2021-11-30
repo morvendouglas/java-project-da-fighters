@@ -10,7 +10,7 @@ const MainContainer = () => {
     <Router>
       <Switch>
         {/* <Route exact path="/das/new" component={DaContainer} /> */}
-        <Route path="/" render ={() => {return <Home/>}} />
+        <Route exact path="/" render ={() => {return <Home/>}} />
         <Route path="/select" component={DaContainer} />
         <Route path="/fight" component={DaContainer} />
       </Switch>
