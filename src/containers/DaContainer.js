@@ -60,10 +60,10 @@ const DaContainer = () => {
         {/* <Route exact path="/das/new" render={() => {
           return <DaForm handlePost={handlePost} />
         }} /> */}
-
+{/* 
         <Route path="/" render ={() => {
           return <Da/>
-        }} />
+        }} /> */}
 
         <Route path="/select" render={() => {
           return <DaList das={das} onDaClicked={onDaClicked} />
@@ -71,9 +71,9 @@ const DaContainer = () => {
         <Route path="/fight" render={() => {
           return <FightScreen playerDa={playerDa} computerDa={computerDa} />
         }} />
-        <Route path="/result" render={() => {
+        {/* <Route path="/result" render={() => {
           return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
-        }} />
+        }} /> */}
       </Switch>
     </>
   )
