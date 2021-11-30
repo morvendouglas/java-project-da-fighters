@@ -42,15 +42,15 @@ const DaContainer = () => {
 
   const selectComputerDa = function () {
     const copiedDas = [...das]
-    for(var i = 0; i < copiedDas.length; i++){
-      if(copiedDas[i] === playerDa){
+    for (var i = 0; i < copiedDas.length; i++) {
+      if (copiedDas[i] === playerDa) {
         copiedDas.splice(i, 1);
       }
     }
     const randomIndex = Math.floor(Math.random() * copiedDas.length);
     const randomDa = copiedDas[randomIndex];
     setComputerDa(randomDa)
-    }
+  }
 
   return (
     <>
@@ -64,11 +64,9 @@ const DaContainer = () => {
         <Route path="/select" render={() => {
           return <DaList das={das} onDaClicked={onDaClicked} />
         }} />
-        		<Route path="/fight" render={() => {
-          return <FightScreen playerDa={playerDa} computerDa={computerDa}/>
+        <Route path="/fight" render={() => {
+          return <FightScreen playerDa={playerDa} computerDa={computerDa} />
         }} />
-
-
       </Switch>
     </>
   )
