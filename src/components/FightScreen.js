@@ -272,7 +272,7 @@ const FightScreen = ({ playerDa, computerDa }) => {
                         end={computerHealth}
                         duration="1"
                     />
-                    </li>ç
+                    </li>
                 </ul>
             </div>
         </>

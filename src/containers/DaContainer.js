@@ -67,6 +67,9 @@ const DaContainer = () => {
         <Route path="/fight" render={() => {
           return <FightScreen playerDa={playerDa} computerDa={computerDa} />
         }} />
+        <Route path="/result" render={() => {
+          return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
+        }} />
       </Switch>
     </>
   )
