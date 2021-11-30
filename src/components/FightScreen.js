@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CountUp from 'react-countup';
+import '../App.css'
 
 const FightScreen = ({ playerDa, computerDa }) => {
 
@@ -253,6 +254,7 @@ const FightScreen = ({ playerDa, computerDa }) => {
                     <li><button onClick={handleHealClick}>{playerDa.healName}</button></li>
                     <li><button onClick={handleSpecialClick}>{playerDa.specialName}</button></li>
                     <li><CountUp
+                        className="health"
                         start={previousPlayerHealth}
                         end={playerHealth}
                         duration="1"
@@ -268,6 +270,7 @@ const FightScreen = ({ playerDa, computerDa }) => {
                     <li><button>{computerDa.healName}</button></li>
                     <li><button>{computerDa.specialName}</button></li>
                     <li><CountUp
+                        className="health"
                         start={previousComputerHealth}
                         end={computerHealth}
                         duration="1"
