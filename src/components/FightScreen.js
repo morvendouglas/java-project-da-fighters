@@ -5,9 +5,9 @@ import '../App.css'
 
 const FightScreen = ({ playerDa, computerDa, onGameFinished }) => {
 
-    const [computerHealth, setComputerHealth] = useState(100);
+    const [computerHealth, setComputerHealth] = useState(20);
     const [previousComputerHealth, setPreviousComputerHealth] = useState(0);
-    const [playerHealth, setPlayerHealth] = useState(20);
+    const [playerHealth, setPlayerHealth] = useState(100);
     const [previousPlayerHealth, setPreviousPlayerHealth] = useState(0);
     const [computerSpecialUsed, setComputerSpecialUsed] = useState(false);
     const [playerSpecialUsed, setPlayerSpecialUsed] = useState(false);

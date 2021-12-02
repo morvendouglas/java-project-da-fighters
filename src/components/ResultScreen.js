@@ -1,21 +1,46 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const ResultScreen = ({ winner, playerDa, onGameFinished }) => {
+const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onChooseNextRandomDa, onPlayerDaContinue, onNewDasList }) => {
 
     const handleOnClick = function () {
         onGameFinished(null);
     }
 
+    const handleOnNextDaClick = function () {
+        const copiedDas = [...das]
+        for (var i = 0; i < copiedDas.length; i++) {
+            if (copiedDas[i] === computerDa) {
+                copiedDas.splice(i, 1);
+            }
+            if (copiedDas[i] === playerDa) {
+                copiedDas.splice(i, 1);
+            }
+        }
+        const randomIndex = Math.floor(Math.random() * copiedDas.length);
+        const randomDa = copiedDas[randomIndex];
+        onChooseNextRandomDa(randomDa)
+        onGameFinished(null)
+        onPlayerDaContinue(playerDa)
+        onNewDasList(copiedDas)
+    }
+
+
+
     return (
         <div className="health">
             <h1>{winner.name} Won !</h1>
             {winner.name === playerDa.name ?
-                <h2> You battered them !</h2>
+                <div>
+                    <h2> You battered them !</h2>
+                    <Link to="/fight">
+                    <button type="button" onClick={handleOnNextDaClick}>Mon then ...</button>
+                    </Link>
+                </div>
                 :
                 <div>
                     <h2>You got smashed ...</h2>
-                    <Link to="/select"><button type="button" onClick="handleOnClick">Play again ...</button></Link>
+                    <Link to="/select"><button type="button" onClick={handleOnClick}>Play again ...</button></Link>
                 </div>
             }
         </div>

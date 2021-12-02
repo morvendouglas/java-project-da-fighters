@@ -50,6 +50,18 @@ const DaContainer = () => {
     setWinner(da)
   }
 
+  const onChooseNextRandomDa = function(da) {
+    setComputerDa(da)
+  }
+
+  const onPlayerDaContinue = function (da) {
+    setPlayerDa(da)
+  }
+
+  const onNewDasList = function (das) {
+    setDas(das)
+  }
+
   const selectComputerDa = function () {
     const copiedDas = [...das]
     for (var i = 0; i < copiedDas.length; i++) {
@@ -61,6 +73,7 @@ const DaContainer = () => {
     const randomDa = copiedDas[randomIndex];
     setComputerDa(randomDa)
   }
+
   return (
 
     <>
@@ -81,7 +94,7 @@ const DaContainer = () => {
         }} /> */}
         </Switch>
       </div> :
-        <ResultScreen winner={winner} playerDa={playerDa} onGameFinished={onGameFinished} />}
+        <ResultScreen winner={winner} playerDa={playerDa} onGameFinished={onGameFinished}  das={das} computerDa={computerDa} onChooseNextRandomDa={onChooseNextRandomDa} onPlayerDaContinue={onPlayerDaContinue} onNewDasList={onNewDasList} />}
     </>
 
 
