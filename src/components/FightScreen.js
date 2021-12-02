@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import CountUp from 'react-countup';
 import { Link } from 'react-router-dom';
 import '../App.css'
+import { getFID } from 'web-vitals';
 
 const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
@@ -11,6 +12,8 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     const [previousPlayerHealth, setPreviousPlayerHealth] = useState(0);
     const [computerSpecialUsed, setComputerSpecialUsed] = useState(false);
     const [playerSpecialUsed, setPlayerSpecialUsed] = useState(false);
+    const [gameFinished, setGameFinished] = useState(false);
+    const [gif, setGif] = useState(false)
 
     useEffect(() => {
         if (computerHealth <= 0 & playerHealth > 0) {
@@ -36,6 +39,11 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         setPreviousComputerHealth(computerHealth)
         setComputerHealth(computerHealth => computerHealth - damage)
         console.log("player hit computer for : " + damage);
+        // checkIfGameFinished()
+        setGif(true)
+        setTimeout(function () {
+            setGif(false)
+        }, 1500)
         setTimeout(function () {
             computerTurn()
         }, 2000)
@@ -46,6 +54,11 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         setPreviousComputerHealth(computerHealth)
         setComputerHealth(computerHealth => computerHealth - damage)
         console.log("player hit computer for : " + damage);
+        // checkIfGameFinished();
+        setGif(true)
+        setTimeout(function () {
+            setGif(false)
+        }, 1500)
         setTimeout(function () {
             computerTurn()
         }, 2000)
@@ -119,12 +132,22 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             setPreviousPlayerHealth(playerHealth)
             setPlayerHealth(playerHealth => playerHealth - damage)
             console.log("computer hit player for : " + damage);
+            // checkIfGameFinished();
+            setGif(true)
+            setTimeout(function () {
+                setGif(false)
+            }, 1500)
         }
         const Attack2 = function () {
             let damage = getRandomNumber(10, 35);
             setPreviousPlayerHealth(playerHealth)
             setPlayerHealth(playerHealth => playerHealth - damage);
             console.log("computer hit player for : " + damage);
+            // checkIfGameFinished();
+            setGif(true)
+            setTimeout(function () {
+                setGif(false)
+            }, 1500)
         }
         const Heal = function () {
             let heal = 0;
@@ -224,50 +247,128 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         }
     };
 
-    return (
-        <>
-        {das.length < 2 ?
-        <div>
-        <h1 className="health">FINAL ROUND</h1>
-        </div>
-        :
-        <div></div>
+
+    const showFist = function () {
+        return <img src={`${process.env.PUBLIC_URL}/fist.gif`} height="200px" width="200px" />
+    }
+
+
+
+    if (gameFinished === false) {
+        return (
+            <>
+                {das.length < 2 ?
+                    <div>
+                        <h1 className="health">FINAL ROUND</h1>
+                    </div>
+                    :
+                    <div></div>}
+                <div>
+                    <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} width="200" height="250" />
+                    <ul>
+                        <li className="health">{playerDa.name}</li>
+                        <li className="health">{playerDa.bio}</li>
+                        <li className="health">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
+                        <li className="health">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
+                        <li className="health">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
+                    </ul>
+                    {previousPlayerHealth > playerHealth ?
+                        <CountUp
+                            className="countUpRed"
+                            start={previousPlayerHealth}
+                            end={playerHealth}
+                            duration="1"
+                        /> :
+                        <CountUp
+                            className="countUpGreen"
+                            start={previousPlayerHealth}
+                            end={playerHealth}
+                            duration="1"
+                        />}
+                </div>
+                {gif === true ? showFist() : null}
+                <div>
+                    <img src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} width="220" height="250" />
+                    <ul>
+                        <li className="health">{computerDa.name}</li>
+                        <li className="health">{computerDa.bio}</li>
+                        <li className="health">{computerDa.attackOneName}...  <button>ATTACK</button></li>
+                        <li className="health">{computerDa.attackTwoName}...  <button>ATTACK</button></li>
+                        <li className="health">{computerDa.healName}...  <button>HEAL</button></li>
+                    </ul>
+
+                    {previousComputerHealth > computerHealth ?
+                        <CountUp
+                            className="countUpRed"
+                            start={previousComputerHealth}
+                            end={computerHealth}
+                            duration="1"
+                        /> :
+                        <CountUp
+                            className="countUpGreen"
+                            start={previousComputerHealth}
+                            end={computerHealth}
+                            duration="1"
+                        />}
+                </div>
+            </>
+        )
+    } else {
+        if (computerHealth <= 0) {
+            return (
+                <>
+                    <div className="health">
+                        <h1>{playerDa.name} smashed {computerDa.name}</h1>
+                        <h2>You Win !</h2>
+                    </div>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <div className="health">
+                        <h1>{computerDa.name} wrecked {playerDa.name}</h1>
+                        <h2>You Lose !</h2>
+                    </div>
+                </>
+            )
         }
-            <div>
-                {playerDa.name}
-                {/* <img src={`${process.env.PUBLIC_URL}/${playerDa.specialName}`} /> */}
-                <ul>
-                    <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
-                    <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
-                    <li><button onClick={handleHealClick}>{playerDa.healName}</button></li>
-                    <li><button onClick={handleSpecialClick}>{playerDa.specialName}</button></li>
-                    <li><CountUp
-                        className="health"
-                        start={previousPlayerHealth}
-                        end={playerHealth}
-                        duration="1"
-                    />
-                    </li>
-                </ul>
-            </div>
-            <div>
-                {computerDa.name}
-                <ul>
-                    <li><button>{computerDa.attackOneName}</button></li>
-                    <li><button>{computerDa.attackTwoName}</button></li>
-                    <li><button>{computerDa.healName}</button></li>
-                    <li><button>{computerDa.specialName}</button></li>
-                    <li><CountUp
-                        className="health"
-                        start={previousComputerHealth}
-                        end={computerHealth}
-                        duration="1"
-                    />
-                    </li>
-                </ul>
-            </div>
-        </>
-    )
+        
+        //         <div>
+        //             {playerDa.name}
+        //             {/* <img src={`${process.env.PUBLIC_URL}/${playerDa.specialName}`} /> */}
+        //             <ul>
+        //                 <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
+        //                 <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
+        //                 <li><button onClick={handleHealClick}>{playerDa.healName}</button></li>
+        //                 <li><button onClick={handleSpecialClick}>{playerDa.specialName}</button></li>
+        //                 <li><CountUp
+        //                     className="health"
+        //                     start={previousPlayerHealth}
+        //                     end={playerHealth}
+        //                     duration="1"
+        //                 />
+        //                 </li>
+        //             </ul>
+        //         </div>
+        //         <div>
+        //             {computerDa.name}
+        //             <ul>
+        //                 <li><button>{computerDa.attackOneName}</button></li>
+        //                 <li><button>{computerDa.attackTwoName}</button></li>
+        //                 <li><button>{computerDa.healName}</button></li>
+        //                 <li><button>{computerDa.specialName}</button></li>
+        //                 <li><CountUp
+        //                     className="health"
+        //                     start={previousComputerHealth}
+        //                     end={computerHealth}
+        //                     duration="1"
+        //                 />
+        //                 </li>
+        //             </ul>
+        //         </div>
+        //     </>
+    }
 }
 
 export default FightScreen;
