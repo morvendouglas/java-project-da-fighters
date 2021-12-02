@@ -21,3 +21,15 @@ body {
 .health {
     color: white;
 }
+
+.countUpRed {
+    color: red;
+    font-size: xx-large;
+
+}
+
+.countUpGreen {
+    color: green;
+    font-size: xx-large;
+
+}
