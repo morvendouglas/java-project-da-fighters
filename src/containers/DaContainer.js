@@ -61,7 +61,7 @@ const DaContainer = () => {
           return <DaForm handlePost={handlePost} />
         }} /> */}
         <Route path="/select" render={() => {
-          return <DaList das={das} onDaClicked={onDaClicked} />
+          return <DaList classname = "DaList" das={das} onDaClicked={onDaClicked} />
         }} />
         <Route path="/fight" render={() => {
           return <FightScreen playerDa={playerDa} computerDa={computerDa} />

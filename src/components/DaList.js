@@ -13,7 +13,7 @@ const DaList = ({ das, onDaClicked }) => {
 	})
 
 	return (
-		<div>
+		<div >
 		<ul>
 			{dasNodes}
 		</ul>
