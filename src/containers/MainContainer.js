@@ -13,6 +13,8 @@ const MainContainer = () => {
         <Route exact path="/" render ={() => {return <Home/>}} />
         <Route path="/select" component={DaContainer} />
         <Route path="/fight" component={DaContainer} />
+        <Route path="/result" component={DaContainer} />
+
       </Switch>
     </Router>
   )

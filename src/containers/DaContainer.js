@@ -5,12 +5,14 @@ import DaForm from '../components/DaForm';
 import Request from '../helpers/request';
 import FightScreen from '../components/FightScreen';
 import Home from '../components/Home';
+import ResultScreen from '../components/ResultScreen';
 
 
 const DaContainer = () => {
   const [das, setDas] = useState([]);
   const [playerDa, setPlayerDa] = useState(null)
   const [computerDa, setComputerDa] = useState(null)
+  const [winner, setWinner] = useState(null);
 
   const requestAll = function () {
     const request = new Request();
@@ -38,7 +40,14 @@ const DaContainer = () => {
   }
 
   const onDaClicked = function (da) {
-    setPlayerDa(da)
+    setPlayerDa(da);
+    <Route path="/result" render={() => {
+      return <ResultScreen />
+    }} />
+  }
+
+  const onGameFinished = function (da) {
+    setWinner(da)
   }
 
   const selectComputerDa = function () {
@@ -52,26 +61,34 @@ const DaContainer = () => {
     const randomDa = copiedDas[randomIndex];
     setComputerDa(randomDa)
   }
-
   return (
-    <>
-      <Switch>
 
-        {/* <Route exact path="/das/new" render={() => {
+    <>
+      {!winner ? <div>
+        <Switch>
+
+          {/* <Route exact path="/das/new" render={() => {
           return <DaForm handlePost={handlePost} />
         }} /> */}
-        <Route path="/select" render={() => {
-          return <DaList das={das} onDaClicked={onDaClicked} />
-        }} />
-        <Route path="/fight" render={() => {
-          return <FightScreen playerDa={playerDa} computerDa={computerDa} />
-        }} />
-        {/* <Route path="/result" render={() => {
+          <Route path="/select" render={() => {
+            return <DaList das={das} onDaClicked={onDaClicked} />
+          }} />
+          <Route path="/fight" render={() => {
+            return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} />
+          }} />
+          {/* <Route path="/result" render={() => {
           return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
         }} /> */}
-      </Switch>
+        </Switch>
+      </div> :
+        <ResultScreen winner={winner} playerDa={playerDa} />}
     </>
+
+
+
   )
+
+
 }
 
 export default DaContainer;
