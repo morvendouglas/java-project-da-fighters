@@ -248,12 +248,13 @@ const FightScreen = ({ playerDa, computerDa }) => {
         return (
             <>
                 <div>
-                    {playerDa.name}
+                    <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} width="200" height="250"/>
                     <ul>
-                        <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
-                        <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
-                        <li><button onClick={handleHealClick}>{playerDa.healName}</button></li>
-                        <li><button onClick={handleSpecialClick}>{playerDa.specialName}</button></li>
+                    <li className="health">{playerDa.name}</li>
+                    <li className="health">{playerDa.bio}</li>
+                        <li className="health">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
+                        <li className="health">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
+                        <li className="health">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
                         <li><CountUp
                             className="health"
                             start={previousPlayerHealth}
@@ -264,12 +265,13 @@ const FightScreen = ({ playerDa, computerDa }) => {
                     </ul>
                 </div>
                 <div>
-                    {computerDa.name}
+                <img src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} width="220" height="250"/>
                     <ul>
-                        <li><button>{computerDa.attackOneName}</button></li>
-                        <li><button>{computerDa.attackTwoName}</button></li>
-                        <li><button>{computerDa.healName}</button></li>
-                        <li><button>{computerDa.specialName}</button></li>
+                        <li className="health">{computerDa.name}</li>
+                        <li className="health">{computerDa.bio}</li>
+                        <li className="health">{computerDa.attackOneName}...  <button>ATTACK</button></li>
+                        <li className="health">{computerDa.attackTwoName}...  <button>ATTACK</button></li>
+                        <li className="health">{computerDa.healName}...  <button>HEAL</button></li>
                         <li><CountUp
                             className="health"
                             start={previousComputerHealth}
