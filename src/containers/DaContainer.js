@@ -81,7 +81,7 @@ const DaContainer = () => {
         }} /> */}
         </Switch>
       </div> :
-        <ResultScreen winner={winner} playerDa={playerDa} />}
+        <ResultScreen winner={winner} playerDa={playerDa} onGameFinished={onGameFinished} />}
     </>
 
 

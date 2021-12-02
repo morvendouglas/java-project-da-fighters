@@ -7,7 +7,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished }) => {
 
     const [computerHealth, setComputerHealth] = useState(100);
     const [previousComputerHealth, setPreviousComputerHealth] = useState(0);
-    const [playerHealth, setPlayerHealth] = useState(100);
+    const [playerHealth, setPlayerHealth] = useState(20);
     const [previousPlayerHealth, setPreviousPlayerHealth] = useState(0);
     const [computerSpecialUsed, setComputerSpecialUsed] = useState(false);
     const [playerSpecialUsed, setPlayerSpecialUsed] = useState(false);
