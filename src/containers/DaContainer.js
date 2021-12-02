@@ -6,13 +6,15 @@ import Request from '../helpers/request';
 import FightScreen from '../components/FightScreen';
 import Home from '../components/Home';
 import ResultScreen from '../components/ResultScreen';
+import FinishScreen from '../components/FinishScreen';
 
 
 const DaContainer = () => {
   const [das, setDas] = useState([]);
   const [playerDa, setPlayerDa] = useState(null)
   const [computerDa, setComputerDa] = useState(null)
-  const [winner, setWinner] = useState(null);
+  const [winner, setWinner] = useState(null)
+  const [gameFinished, setGameFinished] = useState(null)
 
   const requestAll = function () {
     const request = new Request();
@@ -32,7 +34,6 @@ const DaContainer = () => {
     selectComputerDa()
   }, [playerDa])
 
-
   const handlePost = function (da) {
     const request = new Request();
     request.post("/api/das", da)
@@ -50,7 +51,7 @@ const DaContainer = () => {
     setWinner(da)
   }
 
-  const onChooseNextRandomDa = function(da) {
+  const onChooseNextRandomDa = function (da) {
     setComputerDa(da)
   }
 
@@ -60,6 +61,10 @@ const DaContainer = () => {
 
   const onNewDasList = function (das) {
     setDas(das)
+  }
+
+  const onAllDasBeaten = function (da) {
+    setGameFinished(da)
   }
 
   const selectComputerDa = function () {
@@ -74,10 +79,10 @@ const DaContainer = () => {
     setComputerDa(randomDa)
   }
 
-  return (
 
-    <>
-      {!winner ? <div>
+  if (winner === null) {
+    return (
+      <div>
         <Switch>
 
           {/* <Route exact path="/das/new" render={() => {
@@ -87,21 +92,27 @@ const DaContainer = () => {
             return <DaList das={das} onDaClicked={onDaClicked} />
           }} />
           <Route path="/fight" render={() => {
-            return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} />
+            return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} das={das} />
           }} />
           {/* <Route path="/result" render={() => {
           return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
         }} /> */}
         </Switch>
-      </div> :
-        <ResultScreen winner={winner} playerDa={playerDa} onGameFinished={onGameFinished}  das={das} computerDa={computerDa} onChooseNextRandomDa={onChooseNextRandomDa} onPlayerDaContinue={onPlayerDaContinue} onNewDasList={onNewDasList} />}
-    </>
-
-
-
-  )
-
-
+      </div>
+    )
+  } else if (gameFinished != null) {
+    return (
+      <div>
+        <FinishScreen />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <ResultScreen winner={winner} playerDa={playerDa} onGameFinished={onGameFinished} das={das} computerDa={computerDa} onChooseNextRandomDa={onChooseNextRandomDa} onPlayerDaContinue={onPlayerDaContinue} onNewDasList={onNewDasList} onAllDasBeaten={onAllDasBeaten} />
+      </div>
+    )
+  }
 }
 
 export default DaContainer;

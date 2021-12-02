@@ -3,7 +3,7 @@ import CountUp from 'react-countup';
 import { Link } from 'react-router-dom';
 import '../App.css'
 
-const FightScreen = ({ playerDa, computerDa, onGameFinished }) => {
+const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
     const [computerHealth, setComputerHealth] = useState(20);
     const [previousComputerHealth, setPreviousComputerHealth] = useState(0);
@@ -226,6 +226,13 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished }) => {
 
     return (
         <>
+        {das.length < 2 ?
+        <div>
+        <h1 className="health">FINAL ROUND</h1>
+        </div>
+        :
+        <div></div>
+        }
             <div>
                 {playerDa.name}
                 {/* <img src={`${process.env.PUBLIC_URL}/${playerDa.specialName}`} /> */}
