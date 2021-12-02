@@ -9,7 +9,7 @@ const MainContainer = () => {
   return (
     <Router>
       <Switch>
-        {/* <Route exact path="/das/new" component={DaContainer} /> */}
+        {/* <Route exact path="/create-a-da" component={DaContainer} /> */}
         <Route exact path="/" render ={() => {return <Home/>}} />
         <Route path="/select" component={DaContainer} />
         <Route path="/fight" component={DaContainer} />
