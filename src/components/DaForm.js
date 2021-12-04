@@ -5,18 +5,28 @@ const DaForm = ({ handlePost }) => {
     const [stateDa, setStateDa] = useState(
         {
             "name": "",
-            "daType": "",
+            "bio": "",
+            "daType": "BUFFDA",
             "attackOneName": "",
             "attackTwoName": "",
-            "specialName": "",
+            "healName": "",
+            "imgName": "",
             "startingHealth": 100,
             "currentHealth": 100,
-            "photo": "",
-            "bio": ""
         }
     )
 
-    console.log(stateDa)
+    const handleClick = function (event) {
+        let propertyName = event.target.name;
+        let copiedDa = { ...stateDa }
+        const daImg1 = "trump.jpeg"
+        const daImg2 = "bruce-lee.jpeg"
+        const daImg3 = "ned.jpg"
+        const randomDaImg = [daImg1, daImg2, daImg3]
+        const randomNumber = Math.floor(Math.random() * 3);
+        copiedDa[propertyName] = randomDaImg[randomNumber]
+        setStateDa(copiedDa)
+    }
 
     const handleChange = function (event) {
         let propertyName = event.target.name;
@@ -27,7 +37,7 @@ const DaForm = ({ handlePost }) => {
 
     const handleSubmit = function (event) {
         event.preventDefault();
-        handlePost(stateDa);
+        handlePost(stateDa); 
     }
 
     return (
@@ -36,16 +46,11 @@ const DaForm = ({ handlePost }) => {
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Name" name="name" onChange={handleChange} value={stateDa.name} />
                 <input type="text" placeholder="Bio" name="bio" onChange={handleChange} value={stateDa.bio} />
-                <input type="file" name="photo" accept="image/png, image/jpeg" onChange={handleChange} enctype="multipart/form-data"/>
-                <select name="daType" onChange={handleChange} value={stateDa.daType} >
-                    <option defaultValue='select-a-da-type'>Select a Da Type</option>
-                    <option value="BUFFDA">BUFF DA</option>
-                    <option value="AVERAGEDA">AVEREGE DA</option>
-                    <option value="SOFDA">SOFT DA</option>
-                </select>
                 <input type="text" placeholder="First Attack" name="attackOneName" onChange={handleChange} value={stateDa.attackOneName} />
                 <input type="text" placeholder="Second Attack" name="attackTwoName" onChange={handleChange} value={stateDa.attackTwoName} />
-                <input type="text" placeholder="Special Attack" name="specialName" onChange={handleChange} value={stateDa.specialName} />
+                <input type="text" placeholder="Heal" name="healName" onChange={handleChange} value={stateDa.healName} />
+                <label for="imgName" className="health">get a da photo ->></label>
+                <input type="radio" id="imgName" name="imgName" value={stateDa.imgName}onClick={handleClick}></input>
                 <button type ="submit">Save</button>
             </form>
         </>

@@ -18,7 +18,7 @@ const DaContainer = () => {
 
   const requestAll = function () {
     const request = new Request();
-    const dasPromise = request.get('/das')
+    const dasPromise = request.get('/select')
 
     Promise.all([dasPromise])
       .then((data) => {
@@ -36,8 +36,8 @@ const DaContainer = () => {
 
   const handlePost = function (da) {
     const request = new Request();
-    request.post("/api/das", da)
-      .then(() => window.location = '/das')
+    request.post("/create-a-da", da)
+      .then(() => window.location = '/select')
   }
 
   const onDaClicked = function (da) {
@@ -84,10 +84,6 @@ const DaContainer = () => {
     return (
       <div>
         <Switch>
-
-          {/* <Route exact path="/das/new" render={() => {
-          return <DaForm handlePost={handlePost} />
-        }} /> */}
           <Route path="/select" render={() => {
             return <DaList das={das} onDaClicked={onDaClicked} />
           }} />
@@ -97,6 +93,9 @@ const DaContainer = () => {
           {/* <Route path="/result" render={() => {
           return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
         }} /> */}
+          <Route path="/create-a-da" render={() => {
+            return <DaForm handlePost={handlePost} />
+          }} />
         </Switch>
       </div>
     )
