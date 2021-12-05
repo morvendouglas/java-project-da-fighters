@@ -7,6 +7,8 @@ import FightScreen from '../components/FightScreen';
 import Home from '../components/Home';
 import ResultScreen from '../components/ResultScreen';
 import FinishScreen from '../components/FinishScreen';
+import ModeScreen from '../components/ModeScreen';
+import Multiplayer from '../components/Multiplayer';
 
 
 const DaContainer = () => {
@@ -15,6 +17,7 @@ const DaContainer = () => {
   const [computerDa, setComputerDa] = useState(null)
   const [winner, setWinner] = useState(null)
   const [gameFinished, setGameFinished] = useState(null)
+  const [playerTwoDa, setPlayerTwoDa] = useState(null)
 
   const requestAll = function () {
     const request = new Request();
@@ -42,9 +45,13 @@ const DaContainer = () => {
 
   const onDaClicked = function (da) {
     setPlayerDa(da);
-    <Route path="/result" render={() => {
-      return <ResultScreen />
-    }} />
+    // <Route path="/result" render={() => {
+    //   return <ResultScreen />
+    // }} />
+  }
+
+  const onPlayerTwoDaClicked = function (da) {
+    setPlayerTwoDa(da);
   }
 
   const onGameFinished = function (da) {
@@ -93,6 +100,12 @@ const DaContainer = () => {
           }} />
           <Route path="/fight" render={() => {
             return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} das={das} />
+          }} />
+          <Route path="/mode" render={() => {
+            return <ModeScreen />
+          }} />
+          <Route path="/multiplayer" render={() => {
+            return <Multiplayer das={das} onDaClicked={onDaClicked} onPlayerTwoDaClicked={onPlayerTwoDaClicked}/>
           }} />
           {/* <Route path="/result" render={() => {
           return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
