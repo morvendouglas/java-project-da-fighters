@@ -34,3 +34,14 @@ img {
     height: 90px;
     width: 90px;
 }
+
+.countUpRed {
+    color: red;
+    font-size: xx-large;
+}
+
+.countUpGreen {
+    color: green;
+    font-size: xx-large;
+
+}

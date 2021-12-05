@@ -1,23 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CountUp from 'react-countup';
+import { Link } from 'react-router-dom';
 import '../App.css'
+import { getFID } from 'web-vitals';
 
-const FightScreen = ({ playerDa, computerDa }) => {
+const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
-    const [computerHealth, setComputerHealth] = useState(100);
+    const [computerHealth, setComputerHealth] = useState(20);
     const [previousComputerHealth, setPreviousComputerHealth] = useState(0);
     const [playerHealth, setPlayerHealth] = useState(100);
     const [previousPlayerHealth, setPreviousPlayerHealth] = useState(0);
     const [computerSpecialUsed, setComputerSpecialUsed] = useState(false);
     const [playerSpecialUsed, setPlayerSpecialUsed] = useState(false);
     const [gameFinished, setGameFinished] = useState(false);
+    const [gif, setGif] = useState(false)
 
     useEffect(() => {
-        if (computerHealth <= 0 || playerHealth <= 0) {
-            setGameFinished(true);
-            console.log("this has been hit");
+        if (computerHealth <= 0 & playerHealth > 0) {
+            onGameFinished(playerDa);
+        } else if (playerHealth <= 0 & computerHealth > 0) {
+            onGameFinished(computerDa);
         }
-        console.log("me should finish ? : " + gameFinished);
     }, [computerHealth, playerHealth])
 
     const getRandomNumber = function (min, max) {
@@ -33,29 +36,33 @@ const FightScreen = ({ playerDa, computerDa }) => {
         } else {
             damage = getRandomNumber(18, 25)
         }
-        // const health = computerHealth - damage;
         setPreviousComputerHealth(computerHealth)
         setComputerHealth(computerHealth => computerHealth - damage)
         console.log("player hit computer for : " + damage);
         // checkIfGameFinished()
+        setGif(true)
+        setTimeout(function () {
+            setGif(false)
+        }, 1500)
         setTimeout(function () {
             computerTurn()
         }, 2000)
     }
 
-
     const handleAttack2Click = function () {
         let damage = getRandomNumber(10, 35);
-        // const health = computerHealth - damage;
         setPreviousComputerHealth(computerHealth)
         setComputerHealth(computerHealth => computerHealth - damage)
         console.log("player hit computer for : " + damage);
         // checkIfGameFinished();
+        setGif(true)
+        setTimeout(function () {
+            setGif(false)
+        }, 1500)
         setTimeout(function () {
             computerTurn()
         }, 2000)
     }
-
 
     const handleHealClick = function () {
         let heal = 0;
@@ -69,7 +76,6 @@ const FightScreen = ({ playerDa, computerDa }) => {
             setPlayerHealth(playerhealth => 100)
         } else if (playerHealth <= 30) {
             heal = getRandomNumber(24, 25)
-            // const health = playerHealth + heal;
             setPreviousPlayerHealth(playerHealth)
             setPlayerHealth(playerHealth => playerHealth + heal)
         } else {
@@ -78,7 +84,6 @@ const FightScreen = ({ playerDa, computerDa }) => {
             setPlayerHealth(playerHealth => playerHealth + heal)
         }
         console.log("player healed for : " + heal);
-        // checkIfGameFinished();
         setTimeout(function () {
             computerTurn()
         }, 2000)
@@ -91,22 +96,20 @@ const FightScreen = ({ playerDa, computerDa }) => {
             const specialOutcome = [opponentDamage, opponentDamage, selfDamage]
             const specialNumber = Math.floor(Math.random() * 3);
             if (specialOutcome[specialNumber] === opponentDamage) {
-                // const health = computerHealth - opponentDamage;
                 setPreviousComputerHealth(computerHealth)
                 setComputerHealth(computerHealth => computerHealth - opponentDamage);
                 setPlayerSpecialUsed(true);
+                playerDa.specialName = "Special Used"
                 console.log("player hit computer for : " + opponentDamage);
-                // checkIfGameFinished();
                 setTimeout(function () {
                     computerTurn()
                 }, 2000)
             } else if (specialOutcome[specialNumber] === selfDamage) {
-                // const health = playerHealth - selfDamage;
                 setPreviousPlayerHealth(playerHealth)
                 setPlayerHealth(playerHealth => playerHealth - selfDamage);
                 setPlayerSpecialUsed(true);
+                playerDa.specialName = "Special Used"
                 console.log("player hit themselves for : " + selfDamage);
-                // checkIfGameFinished();
                 setTimeout(function () {
                     computerTurn()
                 }, 2000)
@@ -117,7 +120,6 @@ const FightScreen = ({ playerDa, computerDa }) => {
     }
 
     const computerTurn = function () {
-
         const Attack1 = function () {
             let damage = 0;
             if (computerDa.daType === "BUFFDA") {
@@ -127,19 +129,25 @@ const FightScreen = ({ playerDa, computerDa }) => {
             } else {
                 damage = getRandomNumber(18, 25)
             }
-            // const health = playerHealth - damage;
             setPreviousPlayerHealth(playerHealth)
             setPlayerHealth(playerHealth => playerHealth - damage)
             console.log("computer hit player for : " + damage);
             // checkIfGameFinished();
+            setGif(true)
+            setTimeout(function () {
+                setGif(false)
+            }, 1500)
         }
         const Attack2 = function () {
             let damage = getRandomNumber(10, 35);
-            // const health = playerHealth - damage;
             setPreviousPlayerHealth(playerHealth)
             setPlayerHealth(playerHealth => playerHealth - damage);
             console.log("computer hit player for : " + damage);
             // checkIfGameFinished();
+            setGif(true)
+            setTimeout(function () {
+                setGif(false)
+            }, 1500)
         }
         const Heal = function () {
             let heal = 0;
@@ -153,16 +161,13 @@ const FightScreen = ({ playerDa, computerDa }) => {
                 setComputerHealth(computerHealth => 100);
             } else if (computerHealth <= 30) {
                 heal = getRandomNumber(24, 25)
-                // const health = computerHealth + heal;
                 setPreviousComputerHealth(computerHealth)
                 setComputerHealth(computerHealth => computerHealth + heal)
             } else {
-                // const health = computerHealth + heal;
                 setPreviousComputerHealth(computerHealth)
                 setComputerHealth(computerHealth => computerHealth + heal)
             }
             console.log("computer healed for : " + heal);
-            // checkIfGameFinished();
         }
         const Special = function () {
             let opponentDamage = 45;
@@ -170,19 +175,17 @@ const FightScreen = ({ playerDa, computerDa }) => {
             const specialOutcome = [opponentDamage, opponentDamage, selfDamage]
             const specialNumber = Math.floor(Math.random() * 3);
             if (specialOutcome[specialNumber] === opponentDamage) {
-                // const health = playerHealth - opponentDamage;
                 setPreviousPlayerHealth(playerHealth)
                 setPlayerHealth(playerHealth => playerHealth - opponentDamage);
                 setComputerSpecialUsed(true);
+                computerDa.specialName = "Special Used"
                 console.log("computer hit player for : " + opponentDamage);
-                // checkIfGameFinished();
             } else if (specialOutcome[specialNumber] === selfDamage) {
-                // const health = computerHealth - selfDamage;
                 setPreviousComputerHealth(computerHealth)
                 setComputerHealth(computerHealth => computerHealth - selfDamage);
                 setComputerSpecialUsed(true);
+                computerDa.specialName = "Special Used"
                 console.log("computer hit themselves for : " + selfDamage);
-                // checkIfGameFinished();
             }
         }
         if (computerHealth >= 80) {
@@ -227,7 +230,7 @@ const FightScreen = ({ playerDa, computerDa }) => {
                     randomMove[randomNumber]()
                 }, 1000)
             }
-        } else if (computerHealth <= 30) {
+        } else if (computerHealth <= 39) {
             if (computerSpecialUsed === false) {
                 const randomMove = [Attack1, Attack2, Heal, Heal, Heal, Heal, Special]
                 const randomNumber = Math.floor(Math.random() * 7);
@@ -244,42 +247,69 @@ const FightScreen = ({ playerDa, computerDa }) => {
         }
     };
 
+
+    const showFist = function () {
+        return <img src={`${process.env.PUBLIC_URL}/fist.gif`} height="200px" width="200px" />
+    }
+
+
+
     if (gameFinished === false) {
         return (
             <>
+                {das.length < 2 ?
+                    <div>
+                        <h1 className="health">FINAL ROUND</h1>
+                    </div>
+                    :
+                    <div></div>}
                 <div>
-                    <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} width="200" height="250"/>
+                    <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} width="200" height="250" />
                     <ul>
-                    <li className="health">{playerDa.name}</li>
-                    <li className="health">{playerDa.bio}</li>
+                        <li className="health">{playerDa.name}</li>
+                        <li className="health">{playerDa.bio}</li>
                         <li className="health">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
                         <li className="health">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
                         <li className="health">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
-                        <li><CountUp
-                            className="health"
+                    </ul>
+                    {previousPlayerHealth > playerHealth ?
+                        <CountUp
+                            className="countUpRed"
                             start={previousPlayerHealth}
                             end={playerHealth}
                             duration="1"
-                        />
-                        </li>
-                    </ul>
+                        /> :
+                        <CountUp
+                            className="countUpGreen"
+                            start={previousPlayerHealth}
+                            end={playerHealth}
+                            duration="1"
+                        />}
                 </div>
+                {gif === true ? showFist() : null}
                 <div>
-                <img src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} width="220" height="250"/>
+                    <img src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} width="220" height="250" />
                     <ul>
                         <li className="health">{computerDa.name}</li>
                         <li className="health">{computerDa.bio}</li>
                         <li className="health">{computerDa.attackOneName}...  <button>ATTACK</button></li>
                         <li className="health">{computerDa.attackTwoName}...  <button>ATTACK</button></li>
                         <li className="health">{computerDa.healName}...  <button>HEAL</button></li>
-                        <li><CountUp
-                            className="health"
+                    </ul>
+
+                    {previousComputerHealth > computerHealth ?
+                        <CountUp
+                            className="countUpRed"
                             start={previousComputerHealth}
                             end={computerHealth}
                             duration="1"
-                        />
-                        </li>
-                    </ul>
+                        /> :
+                        <CountUp
+                            className="countUpGreen"
+                            start={previousComputerHealth}
+                            end={computerHealth}
+                            duration="1"
+                        />}
                 </div>
             </>
         )
@@ -303,6 +333,41 @@ const FightScreen = ({ playerDa, computerDa }) => {
                 </>
             )
         }
+        
+        //         <div>
+        //             {playerDa.name}
+        //             {/* <img src={`${process.env.PUBLIC_URL}/${playerDa.specialName}`} /> */}
+        //             <ul>
+        //                 <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
+        //                 <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
+        //                 <li><button onClick={handleHealClick}>{playerDa.healName}</button></li>
+        //                 <li><button onClick={handleSpecialClick}>{playerDa.specialName}</button></li>
+        //                 <li><CountUp
+        //                     className="health"
+        //                     start={previousPlayerHealth}
+        //                     end={playerHealth}
+        //                     duration="1"
+        //                 />
+        //                 </li>
+        //             </ul>
+        //         </div>
+        //         <div>
+        //             {computerDa.name}
+        //             <ul>
+        //                 <li><button>{computerDa.attackOneName}</button></li>
+        //                 <li><button>{computerDa.attackTwoName}</button></li>
+        //                 <li><button>{computerDa.healName}</button></li>
+        //                 <li><button>{computerDa.specialName}</button></li>
+        //                 <li><CountUp
+        //                     className="health"
+        //                     start={previousComputerHealth}
+        //                     end={computerHealth}
+        //                     duration="1"
+        //                 />
+        //                 </li>
+        //             </ul>
+        //         </div>
+        //     </>
     }
 }
 
