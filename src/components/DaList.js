@@ -18,7 +18,6 @@ const DaList = ({ das, onDaClicked }) => {
 			{dasNodes}
 		</ul>
 		<Link to="/fight"><button type="button">Fight</button></Link>
-
 		</div>
 	)
 }

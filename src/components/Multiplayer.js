@@ -1,6 +1,7 @@
 import React from "react";
 import Da from "./Da";
 import PlayerTwoDa from "./PlayerTwoDa"
+import { Link } from 'react-router-dom';
 
 const Multiplayer = ({ das, onDaClicked, onPlayerTwoDaClicked }) => {
 
@@ -31,6 +32,7 @@ const Multiplayer = ({ das, onDaClicked, onPlayerTwoDaClicked }) => {
                 <h2 className="health">Player Two : </h2>
                 {playerTwoDasNodes}
             </ul>
+            <Link to="/multiplayerfight"><button type="button">Fight</button></Link>
         </div>
     )
 

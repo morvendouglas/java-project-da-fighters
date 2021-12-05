@@ -9,6 +9,7 @@ import ResultScreen from '../components/ResultScreen';
 import FinishScreen from '../components/FinishScreen';
 import ModeScreen from '../components/ModeScreen';
 import Multiplayer from '../components/Multiplayer';
+import MultiplayerFightScreen from '../components/MultiplayerFightScreen'
 
 
 const DaContainer = () => {
@@ -101,11 +102,14 @@ const DaContainer = () => {
           <Route path="/fight" render={() => {
             return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} das={das} />
           }} />
+          <Route path="/multiplayerfight" render={() => {
+            return <MultiplayerFightScreen playerDa={playerDa} playerTwoDa={playerTwoDa} onGameFinished={onGameFinished} />
+          }} />
           <Route path="/mode" render={() => {
             return <ModeScreen />
           }} />
           <Route path="/multiplayer" render={() => {
-            return <Multiplayer das={das} onDaClicked={onDaClicked} onPlayerTwoDaClicked={onPlayerTwoDaClicked}/>
+            return <Multiplayer das={das} onDaClicked={onDaClicked} onPlayerTwoDaClicked={onPlayerTwoDaClicked} />
           }} />
           {/* <Route path="/result" render={() => {
           return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
