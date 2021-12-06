@@ -86,3 +86,44 @@ button{
     height: 100px;
     width: 200px;
 }
+/* .fight_bg{
+  background-image:url(public/fight.gif);
+  background-position: 'center';
+  background-size: 'cover';
+  background-repeat: 'no-repeat';
+  width: '100vw';
+  height: '100vh';
+}  */
+
+.fight_bg{
+  margin:0 auto;
+  background: url(/src/fight.gif) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.DaFightImg{
+  height: 200px;
+  width: 200px;
+  padding: 200px;
+}
+.name{
+  color: white;
+}
+
+.bio{
+  color: white;
+}
+
+.attack1{
+  color: white;
+}
+
+.attack2{
+  color: white;
+}
+
+.heal{
+  color: white;
+}

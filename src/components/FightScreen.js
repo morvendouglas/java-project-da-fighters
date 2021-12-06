@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import '../App.css'
 import { getFID } from 'web-vitals';
 
-<img></img>
 
 const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
@@ -258,7 +257,8 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
     if (gameFinished === false) {
         return (
-            <>
+            <div className="fight_bg">
+            <img src={`${process.env.PUBLIC_URL}/fight.gif`}/>
                 {das.length < 2 ?
                     <div>
                         <h1 className="health">FINAL ROUND</h1>
@@ -266,13 +266,13 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                     :
                     <div></div>}
                 <div>
-                    <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} width="200" height="250" />
+                    <img className="DaFightImg" src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} width="200" height="200" />
                     <ul>
-                        <li className="health">{playerDa.name}</li>
-                        <li className="health">{playerDa.bio}</li>
-                        <li className="health">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
-                        <li className="health">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
-                        <li className="health">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
+                        <li className="name">{playerDa.name}</li>
+                        <li className="bio">{playerDa.bio}</li>
+                        <li className="attack1">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
+                        <li className="attack2">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
+                        <li className="heal">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
                     </ul>
                     {previousPlayerHealth > playerHealth ?
                         <CountUp
@@ -313,7 +313,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                             duration="1"
                         />}
                 </div>
-            </>
+                 </div>
         )
     } else {
         if (computerHealth <= 0) {
@@ -332,7 +332,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                         <h1>{computerDa.name} wrecked {playerDa.name}</h1>
                         <h2>You Lose !</h2>
                     </div>
-                </>
+                    </>
             )
         }
         

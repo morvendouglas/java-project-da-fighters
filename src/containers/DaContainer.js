@@ -92,7 +92,7 @@ const DaContainer = () => {
           return <DaList classname = "DaList" das={das} onDaClicked={onDaClicked} />
         }} />
         <Route path="/fight" render={() => {
-          return <FightScreen playerDa={playerDa} computerDa={computerDa} das = {das}/>
+          return <FightScreen classname="fight" playerDa={playerDa} computerDa={computerDa} das = {das}/>
         }} />
         {/* <Route path="/result" render={() => {
           <Route path="/select" render={() => {
