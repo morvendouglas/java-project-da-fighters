@@ -86,14 +86,6 @@ button{
     height: 100px;
     width: 200px;
 }
-/* .fight_bg{
-  background-image:url(public/fight.gif);
-  background-position: 'center';
-  background-size: 'cover';
-  background-repeat: 'no-repeat';
-  width: '100vw';
-  height: '100vh';
-}  */
 
 .fight_bg{
   margin:0 auto;
@@ -102,28 +94,56 @@ button{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
 }
 .DaFightImg{
   height: 200px;
   width: 200px;
   padding: 200px;
 }
+
+.DaDetails {
+  list-style:none;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style:none;
+  padding-right: 300px;
+} 
 .name{
   color: white;
+  font-size: xx-large;
+  margin-top: -250px;
+  margin-right: 100px;
 }
-
 .bio{
   color: white;
+  max-width: 400px;
 }
-
 .attack1{
   color: white;
 }
-
 .attack2{
   color: white;
 }
-
 .heal{
+  color: white;
+}
+.CPUName{
+  color: white;
+  margin-top: 200px;
+  font-size: xx-large;
+  margin-left: 10px;
+}
+.CPUBio{
+  color: white;
+  max-width: 400px;
+}
+.CPUAttack1{
+  color: white;
+}
+.CPUAttack2{
+  color: white;
+}
+.CPUHeal{
   color: white;
 }
