@@ -31,7 +31,7 @@ body {
   .flex-item  {
     width: 200px;
     height: 200px;
-    padding:  2px 2px 2px 2px ;
+    padding:  1px 1px 1px 1px ;
       }
     
   .flex-item:hover {

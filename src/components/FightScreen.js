@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import '../App.css'
 import { getFID } from 'web-vitals';
 
+<img></img>
+
 const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
     const [computerHealth, setComputerHealth] = useState(20);
