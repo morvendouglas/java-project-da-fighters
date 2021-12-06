@@ -3,7 +3,7 @@ import Da from "./Da";
 import PlayerTwoDa from "./PlayerTwoDa"
 import { Link } from 'react-router-dom';
 
-const Multiplayer = ({ das, onDaClicked, onPlayerTwoDaClicked }) => {
+const Simulation = ({ das, onDaClicked, onPlayerTwoDaClicked }) => {
 
     const playerOneDasNodes = das.map((da, index) => {
         return (
@@ -25,17 +25,17 @@ const Multiplayer = ({ das, onDaClicked, onPlayerTwoDaClicked }) => {
         <div>
             <h1 className="health">This is the Multiplayer screen</h1>
             <ul>
-                <h2 className="health">Player One : </h2>
+                <h2 className="health">Computer Da One : </h2>
                 {playerOneDasNodes}
             </ul>
             <ul>
-                <h2 className="health">Player Two : </h2>
+                <h2 className="health">Computer Da Two : </h2>
                 {playerTwoDasNodes}
             </ul>
-            <Link to="/multiplayerfight"><button type="button">Fight</button></Link>
+            <Link to="/simulationfight"><button type="button">Fight</button></Link>
         </div>
     )
 
 }
 
-export default Multiplayer
+export default Simulation

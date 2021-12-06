@@ -18,6 +18,8 @@ const MainContainer = () => {
         <Route path="/mode" component={DaContainer} />
         <Route path="/multiplayer" component={DaContainer} />
         <Route path="/multiplayerfight" component={DaContainer} />
+        <Route path="/simulation" component={DaContainer} />
+        <Route path="/simulationfight" component={DaContainer} />
       </Switch>
     </Router>
   )
