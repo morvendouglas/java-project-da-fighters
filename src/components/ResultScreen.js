@@ -30,8 +30,6 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
         }
     }
 
-
-
     return (
         <div className="health">
             <h1>{winner.name} Won !</h1>

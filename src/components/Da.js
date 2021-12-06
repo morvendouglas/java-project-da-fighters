@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'
 
 const Da = ({ da, onDaClicked }) => {
   
@@ -9,9 +10,11 @@ const Da = ({ da, onDaClicked }) => {
 
   return (
     <>
-      {/* <button onClick={handleClick}>{da.name}</button> */}
-      <img src={`${process.env.PUBLIC_URL}/${da.imgName}`} onClick={handleClick}  width="280" height="350"/>
+    <div >
+      <img className = "flex-item" src={`${process.env.PUBLIC_URL}/${da.imgName}`} onClick={handleClick}/>
+      </div>
     </>
+   
   )
 }
 

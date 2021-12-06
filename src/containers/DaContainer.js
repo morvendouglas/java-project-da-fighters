@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import DaList from '../components/DaList';
-import DaForm from '../components/DaForm';
-import Request from '../helpers/request';
+import CreateADa from '../components/CreateADa';
 import FightScreen from '../components/FightScreen';
-import Home from '../components/Home';
 import ResultScreen from '../components/ResultScreen';
 import FinishScreen from '../components/FinishScreen';
 import ModeScreen from '../components/ModeScreen';
@@ -12,6 +10,8 @@ import Multiplayer from '../components/Multiplayer';
 import Simulation from '../components/Simulation';
 import MultiplayerFightScreen from '../components/MultiplayerFightScreen'
 import SimulationFightScreen from '../components/SimulationFightScreen'
+import Scoreboard from '../components/Scoreboard';
+import Request from '../helpers/request';
 
 
 const DaContainer = () => {
@@ -24,7 +24,7 @@ const DaContainer = () => {
 
   const requestAll = function () {
     const request = new Request();
-    const dasPromise = request.get('/das')
+    const dasPromise = request.get('/select')
 
     Promise.all([dasPromise])
       .then((data) => {
@@ -42,8 +42,22 @@ const DaContainer = () => {
 
   const handlePost = function (da) {
     const request = new Request();
-    request.post("/api/das", da)
-      .then(() => window.location = '/das')
+    request.post("/create-a-da", da)
+      .then(() => window.location = '/select')
+  }
+
+  const findDaById = function (id) {
+    return das.find((da) => {
+      return da.id === parseInt(id);
+    })
+  }
+
+  const handleUpdate = function (da) {
+    const request = new Request();
+    request.patch('/scoreboard/' + da.id, da)
+      // .then(() => {
+      //   window.location = '/scoreboard/:id'
+      // })
   }
 
   const onDaClicked = function (da) {
@@ -89,17 +103,12 @@ const DaContainer = () => {
     setComputerDa(randomDa)
   }
 
-
   if (winner === null) {
     return (
       <div>
         <Switch>
-
-          {/* <Route exact path="/das/new" render={() => {
-          return <DaForm handlePost={handlePost} />
-        }} /> */}
           <Route path="/select" render={() => {
-            return <DaList das={das} onDaClicked={onDaClicked} />
+            return <DaList classname="DaList" das={das} onDaClicked={onDaClicked} />
           }} />
           <Route path="/fight" render={() => {
             return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} das={das} />
@@ -122,13 +131,21 @@ const DaContainer = () => {
           {/* <Route path="/result" render={() => {
           return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
         }} /> */}
+          <Route path="/create-a-da" render={() => {
+            return <CreateADa handlePost={handlePost} />
+          }} />
+          <Route path="/scoreboard/:id" render={(props) => {
+            const id = props.match.params.id;
+            const da = findDaById(id);
+             return <Scoreboard das={das} handleUpdate={handleUpdate}/> 
+          }} />
         </Switch>
       </div>
     )
   } else if (gameFinished != null) {
     return (
       <div>
-        <FinishScreen />
+        <FinishScreen winner={winner} />
       </div>
     )
   } else {

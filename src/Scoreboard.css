@@ -1,0 +1,21 @@
+.scoreboard {
+    border: 1px solid white;
+    font-size: x-large;
+    color: white;
+    padding: 3vh;
+    padding: 3vw;
+}
+
+.countUpGreen {
+    color: green;
+}
+
+.padding {
+    margin-right: 1vw;
+}
+
+.da {
+    padding-right: 5vw;
+}
+
+
