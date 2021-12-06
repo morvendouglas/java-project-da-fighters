@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import DaList from '../components/DaList';
-import DaForm from '../components/DaForm';
-import Request from '../helpers/request';
+import CreateADa from '../components/CreateADa';
 import FightScreen from '../components/FightScreen';
 import ResultScreen from '../components/ResultScreen';
 import FinishScreen from '../components/FinishScreen';
+import Scoreboard from '../components/Scoreboard';
+import Request from '../helpers/request';
 
 
 const DaContainer = () => {
@@ -37,6 +38,20 @@ const DaContainer = () => {
     const request = new Request();
     request.post("/create-a-da", da)
       .then(() => window.location = '/select')
+  }
+
+  const findDaById = function (id) {
+    return das.find((da) => {
+      return da.id === parseInt(id);
+    })
+  }
+
+  const handleUpdate = function (da) {
+    const request = new Request();
+    request.patch('/scoreboard/' + da.id, da)
+      // .then(() => {
+      //   window.location = '/scoreboard/:id'
+      // })
   }
 
   const onDaClicked = function (da) {
@@ -78,7 +93,6 @@ const DaContainer = () => {
     setComputerDa(randomDa)
   }
 
-
   if (winner === null) {
     return (
       <div>
@@ -90,7 +104,12 @@ const DaContainer = () => {
             return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} das={das} />
           }} />
           <Route path="/create-a-da" render={() => {
-            return <DaForm handlePost={handlePost} />
+            return <CreateADa handlePost={handlePost} />
+          }} />
+          <Route path="/scoreboard/:id" render={(props) => {
+            const id = props.match.params.id;
+            const da = findDaById(id);
+             return <Scoreboard das={das} handleUpdate={handleUpdate}/> 
           }} />
         </Switch>
       </div>
@@ -98,7 +117,7 @@ const DaContainer = () => {
   } else if (gameFinished != null) {
     return (
       <div>
-        <FinishScreen />
+        <FinishScreen winner={winner} />
       </div>
     )
   } else {

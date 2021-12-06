@@ -1,12 +1,13 @@
 import React from 'react';
 import Da from './Da';
 import { Link } from 'react-router-dom';
+import '../App.css'
 
 const DaList = ({ das, onDaClicked }) => {
 
 	const dasNodes = das.map((da, index) => {
 		return (
-			<li key={index}>
+			<li key={index} >
 				<Da da={da} key={index} onDaClicked={onDaClicked}/>
 			</li>
 		)
