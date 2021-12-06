@@ -4,7 +4,6 @@ import DaList from '../components/DaList';
 import DaForm from '../components/DaForm';
 import Request from '../helpers/request';
 import FightScreen from '../components/FightScreen';
-import Home from '../components/Home';
 import ResultScreen from '../components/ResultScreen';
 import FinishScreen from '../components/FinishScreen';
 
@@ -85,14 +84,11 @@ const DaContainer = () => {
       <div>
         <Switch>
           <Route path="/select" render={() => {
-            return <DaList das={das} onDaClicked={onDaClicked} />
+            return <DaList classname="DaList" das={das} onDaClicked={onDaClicked} />
           }} />
           <Route path="/fight" render={() => {
             return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} das={das} />
           }} />
-          {/* <Route path="/result" render={() => {
-          return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
-        }} /> */}
           <Route path="/create-a-da" render={() => {
             return <DaForm handlePost={handlePost} />
           }} />

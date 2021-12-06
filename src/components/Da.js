@@ -9,8 +9,11 @@ const Da = ({ da, onDaClicked }) => {
 
   return (
     <>
-      <img src={`${process.env.PUBLIC_URL}/${da.imgName}`} onClick={handleClick}  width="280" height="350"/>
+    <div >
+      <img className = "flex-item" src={`${process.env.PUBLIC_URL}/${da.imgName}`} onClick={handleClick}/>
+      </div>
     </>
+   
   )
 }
 

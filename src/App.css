@@ -22,14 +22,128 @@ body {
     color: white;
 }
 
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .flex-item  {
+    width: 200px;
+    height: 200px;
+    padding:  1px 1px 1px 1px ;
+      }
+    
+  .flex-item:hover {
+    cursor: pointer;
+    outline-style: solid;
+    outline-color: #ffdf59;
+    outline-width: 2px;
+    box-sizing: border-box;
+  }
+
 .countUpRed {
     color: red;
     font-size: xx-large;
-
 }
 
 .countUpGreen {
     color: green;
     font-size: xx-large;
 
+}
+
+button{
+    background-color: #e05f14;
+    border: none;    
+    color: black;
+    padding: 8px 22px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.2s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+  }
+
+  button:hover {opacity: 1}
+
+  .fight_button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -90px;
+    height: 400px;
+    width: 600px;
+}
+  .home_button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 200px;
+}
+
+.fight_bg{
+  margin:0 auto;
+  background: url(/src/fight.gif) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+.DaFightImg{
+  height: 200px;
+  width: 200px;
+  padding: 200px;
+}
+
+.DaDetails {
+  list-style:none;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style:none;
+  padding-right: 300px;
+} 
+.name{
+  color: white;
+  font-size: xx-large;
+  margin-top: -250px;
+  margin-right: 100px;
+}
+.bio{
+  color: white;
+  max-width: 400px;
+}
+.attack1{
+  color: white;
+}
+.attack2{
+  color: white;
+}
+.heal{
+  color: white;
+}
+.CPUName{
+  color: white;
+  margin-top: 200px;
+  font-size: xx-large;
+  margin-left: 10px;
+}
+.CPUBio{
+  color: white;
+  max-width: 400px;
+}
+.CPUAttack1{
+  color: white;
+}
+.CPUAttack2{
+  color: white;
+}
+.CPUHeal{
+  color: white;
 }
