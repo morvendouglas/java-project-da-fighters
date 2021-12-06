@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'
 
 const Da = ({ da, onDaClicked }) => {
   
@@ -9,7 +10,7 @@ const Da = ({ da, onDaClicked }) => {
 
   return (
     <>
-      <img src={`${process.env.PUBLIC_URL}/${da.imgName}`} onClick={handleClick}  width="280" height="350"/>
+      <img src={`${process.env.PUBLIC_URL}/${da.imgName}`} alt="fighter-da" onClick={handleClick}  width="280" height="350"/>
     </>
   )
 }

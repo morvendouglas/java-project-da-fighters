@@ -15,6 +15,7 @@ const MainContainer = () => {
         <Route path="/result" component={DaContainer} />
         <Route path="/finish" component={DaContainer} />
         <Route path="/create-a-da" component={DaContainer} />
+        <Route path="/scoreboard/:id" component={DaContainer} />
       </Switch>
     </Router>
   )

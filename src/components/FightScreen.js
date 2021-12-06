@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
-import { Link } from 'react-router-dom';
 import '../App.css'
-import { getFID } from 'web-vitals';
 
 const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
-    const [computerHealth, setComputerHealth] = useState(20);
+    const [computerHealth, setComputerHealth] = useState(100);
     const [previousComputerHealth, setPreviousComputerHealth] = useState(0);
     const [playerHealth, setPlayerHealth] = useState(100);
     const [previousPlayerHealth, setPreviousPlayerHealth] = useState(0);
@@ -14,6 +12,9 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     const [playerSpecialUsed, setPlayerSpecialUsed] = useState(false);
     const [gameFinished, setGameFinished] = useState(false);
     const [gif, setGif] = useState(false)
+    const [leftGif, setLeftGif] = useState(false)
+    const [rightGif, setRightGif] = useState(false)
+    const [healGif, setHealGif] = useState(false)
 
     useEffect(() => {
         if (computerHealth <= 0 & playerHealth > 0) {
@@ -84,6 +85,10 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             setPlayerHealth(playerHealth => playerHealth + heal)
         }
         console.log("player healed for : " + heal);
+        setHealGif(true)
+        setTimeout(function () {
+            setHealGif(false)
+        }, 2000)
         setTimeout(function () {
             computerTurn()
         }, 2000)
@@ -110,6 +115,10 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setPlayerSpecialUsed(true);
                 playerDa.specialName = "Special Used"
                 console.log("player hit themselves for : " + selfDamage);
+                setLeftGif(true)
+                setTimeout(function () {
+                    setLeftGif(false)
+                }, 2500)
                 setTimeout(function () {
                     computerTurn()
                 }, 2000)
@@ -168,6 +177,10 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setComputerHealth(computerHealth => computerHealth + heal)
             }
             console.log("computer healed for : " + heal);
+            setHealGif(true)
+            setTimeout(function () {
+                setHealGif(false)
+            }, 1500)
         }
         const Special = function () {
             let opponentDamage = 45;
@@ -186,6 +199,10 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setComputerSpecialUsed(true);
                 computerDa.specialName = "Special Used"
                 console.log("computer hit themselves for : " + selfDamage);
+                setRightGif(true)
+                setTimeout(function () {
+                    setRightGif(false)
+                }, 2500)
             }
         }
         if (computerHealth >= 80) {
@@ -247,11 +264,33 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         }
     };
 
-
-    const showFist = function () {
-        return <img src={`${process.env.PUBLIC_URL}/fist.gif`} height="200px" width="200px" />
+    const showGifLeft = function () {
+        const daImg2 = "left2.gif"
+        const daImg3 = "left3.gif"
+        const randomDaImg = [daImg2, daImg3]
+        const randomNumber = Math.floor(Math.random() * 2);
+        const img = randomDaImg[randomNumber]
+        return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="200px" width="200px" />
     }
 
+    const showGifRight = function () {
+        const daImg1 = "right1.gif"
+        const daImg2 = "right2.gif"
+        const daImg3 = "right3.gif"
+        const randomDaImg = [daImg1, daImg2, daImg3]
+        const randomNumber = Math.floor(Math.random() * 3);
+        const img = randomDaImg[randomNumber]
+        return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="200px" width="200px" />
+    }
+
+    const showFist = function () {
+        return <img src={`${process.env.PUBLIC_URL}/fist.gif`} alt="fist" height="100px" width="100px" />
+
+    }
+
+    const showHeal = function () {
+        return <img src={`${process.env.PUBLIC_URL}/icegif-1029.gif`} alt="fist" height="100px" width="100px" />
+    }
 
 
     if (gameFinished === false) {
@@ -264,7 +303,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                     :
                     <div></div>}
                 <div>
-                    <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} width="200" height="250" />
+                    <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} alt="da-fighter" width="200" height="250" />
                     <ul>
                         <li className="health">{playerDa.name}</li>
                         <li className="health">{playerDa.bio}</li>
@@ -286,9 +325,12 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                             duration="1"
                         />}
                 </div>
+                {leftGif === true ? showGifLeft() : null}
+                {rightGif === true ? showGifRight() : null}
+                {healGif === true ? showHeal() : null}
                 {gif === true ? showFist() : null}
                 <div>
-                    <img src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} width="220" height="250" />
+                    <img src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} alt="da-fighter" width="220" height="250" />
                     <ul>
                         <li className="health">{computerDa.name}</li>
                         <li className="health">{computerDa.bio}</li>
@@ -333,41 +375,6 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 </>
             )
         }
-        
-        //         <div>
-        //             {playerDa.name}
-        //             {/* <img src={`${process.env.PUBLIC_URL}/${playerDa.specialName}`} /> */}
-        //             <ul>
-        //                 <li><button onClick={handleAttack1Click}>{playerDa.attackOneName}</button></li>
-        //                 <li><button onClick={handleAttack2Click}>{playerDa.attackTwoName}</button></li>
-        //                 <li><button onClick={handleHealClick}>{playerDa.healName}</button></li>
-        //                 <li><button onClick={handleSpecialClick}>{playerDa.specialName}</button></li>
-        //                 <li><CountUp
-        //                     className="health"
-        //                     start={previousPlayerHealth}
-        //                     end={playerHealth}
-        //                     duration="1"
-        //                 />
-        //                 </li>
-        //             </ul>
-        //         </div>
-        //         <div>
-        //             {computerDa.name}
-        //             <ul>
-        //                 <li><button>{computerDa.attackOneName}</button></li>
-        //                 <li><button>{computerDa.attackTwoName}</button></li>
-        //                 <li><button>{computerDa.healName}</button></li>
-        //                 <li><button>{computerDa.specialName}</button></li>
-        //                 <li><CountUp
-        //                     className="health"
-        //                     start={previousComputerHealth}
-        //                     end={computerHealth}
-        //                     duration="1"
-        //                 />
-        //                 </li>
-        //             </ul>
-        //         </div>
-        //     </>
     }
 }
 

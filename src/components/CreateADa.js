@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-const DaForm = ({ handlePost }) => {
+const CreateADa = ({ handlePost }) => {
+
+    // cant get daType in a select to  work with daForm
 
     const [stateDa, setStateDa] = useState(
         {
@@ -13,14 +15,15 @@ const DaForm = ({ handlePost }) => {
             "imgName": "",
             "startingHealth": 100,
             "currentHealth": 100,
+            "points": 0
         }
     )
 
     const handleClick = function (event) {
         let propertyName = event.target.name;
         let copiedDa = { ...stateDa }
-        const daImg1 = "trump.jpeg"
-        const daImg2 = "bruce-lee.jpeg"
+        const daImg1 = "obama.jpg"
+        const daImg2 = "jackie-chan.jpg"
         const daImg3 = "ned.jpg"
         const randomDaImg = [daImg1, daImg2, daImg3]
         const randomNumber = Math.floor(Math.random() * 3);
@@ -49,7 +52,7 @@ const DaForm = ({ handlePost }) => {
                 <input type="text" placeholder="First Attack" name="attackOneName" onChange={handleChange} value={stateDa.attackOneName} />
                 <input type="text" placeholder="Second Attack" name="attackTwoName" onChange={handleChange} value={stateDa.attackTwoName} />
                 <input type="text" placeholder="Heal" name="healName" onChange={handleChange} value={stateDa.healName} />
-                <label for="imgName" className="health">get a da photo ->></label>
+                <label for="imgName" className="health">Click for your da's photo</label>
                 <input type="radio" id="imgName" name="imgName" value={stateDa.imgName}onClick={handleClick}></input>
                 <button type ="submit">Save</button>
             </form>
@@ -59,4 +62,4 @@ const DaForm = ({ handlePost }) => {
 }
 
 
-export default DaForm;
+export default CreateADa;
