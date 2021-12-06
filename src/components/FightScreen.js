@@ -6,7 +6,7 @@ import { getFID } from 'web-vitals';
 
 const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
-    const [computerHealth, setComputerHealth] = useState(20);
+    const [computerHealth, setComputerHealth] = useState(100);
     const [previousComputerHealth, setPreviousComputerHealth] = useState(0);
     const [playerHealth, setPlayerHealth] = useState(100);
     const [previousPlayerHealth, setPreviousPlayerHealth] = useState(0);
@@ -22,6 +22,22 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             onGameFinished(computerDa);
         }
     }, [computerHealth, playerHealth])
+
+    const playSound = function () {
+        let audio1 = new Audio ("/sound1.wav")
+        let audio2 = new Audio ("/sound2.wav")
+        let audio3 = new Audio ("/sound3.wav")
+        let audio4 = new Audio ("/sound4.wav")
+        const randomAudio = [audio1, audio2, audio3, audio4]
+        const randomNumber = Math.floor(Math.random() * 4);
+        const chosenSound = randomAudio[randomNumber]
+        chosenSound.play()
+    };
+
+    const playHeal = function () {
+        let healAudio = new Audio ("/nectar.wav")
+        healAudio.play()
+    }
 
     const getRandomNumber = function (min, max) {
         return Math.floor(Math.random() * ((max - min) + 1) + min);
@@ -39,6 +55,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         setPreviousComputerHealth(computerHealth)
         setComputerHealth(computerHealth => computerHealth - damage)
         console.log("player hit computer for : " + damage);
+        playSound()
         // checkIfGameFinished()
         setGif(true)
         setTimeout(function () {
@@ -83,6 +100,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             setPreviousPlayerHealth(playerHealth)
             setPlayerHealth(playerHealth => playerHealth + heal)
         }
+        playHeal()
         console.log("player healed for : " + heal);
         setTimeout(function () {
             computerTurn()
@@ -333,7 +351,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 </>
             )
         }
-        
+
         //         <div>
         //             {playerDa.name}
         //             {/* <img src={`${process.env.PUBLIC_URL}/${playerDa.specialName}`} /> */}
