@@ -9,9 +9,9 @@ const Da = ({ da, onDaClicked }) => {
 
   return (
     <>
-    <div className = "flex-container">
+    <div >
       {/* <button onClick={handleClick}>{da.name}</button> */}
-      <img className = "flex-item" src={`${process.env.PUBLIC_URL}/${da.imgName}`} onClick={handleClick}  width="280" height="350"/>
+      <img className = "flex-item" src={`${process.env.PUBLIC_URL}/${da.imgName}`} onClick={handleClick}/>
       </div>
     </>
    

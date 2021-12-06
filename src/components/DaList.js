@@ -14,7 +14,7 @@ const DaList = ({ das, onDaClicked }) => {
 
 	return (
 		<div >
-		<ul>
+		<ul className = "flex-container">
 			{dasNodes}
 		</ul>
 		<Link to="/fight"><button type="button">Fight</button></Link>

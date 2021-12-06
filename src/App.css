@@ -24,16 +24,23 @@ body {
 
 .flex-container {
     display: flex;
-    gap: 10px;
-    gap: 10px 20px; /* row-gap column gap */
-    row-gap: 10px;
-    column-gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-img {
-    height: 90px;
-    width: 90px;
-}
+  .flex-item  {
+    width: 200px;
+    height: 200px;
+    padding:  5px 5px 5px 5px ;
+      }
+    
+  .flex-item:hover {
+    cursor: pointer;
+    outline-style: solid;
+    outline-color: #ffdf59;
+    outline-width: 2px;
+    box-sizing: border-box;
+  }
 
 .countUpRed {
     color: red;
@@ -45,3 +52,21 @@ img {
     font-size: xx-large;
 
 }
+
+button{
+    background-color: #e05f14;
+    border: none;    
+    color: black;
+    padding: 8px 22px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.2s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+  }
+
+  button:hover {opacity: 1}
