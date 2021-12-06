@@ -5,6 +5,11 @@ import CreateADa from '../components/CreateADa';
 import FightScreen from '../components/FightScreen';
 import ResultScreen from '../components/ResultScreen';
 import FinishScreen from '../components/FinishScreen';
+import ModeScreen from '../components/ModeScreen';
+import Multiplayer from '../components/Multiplayer';
+import Simulation from '../components/Simulation';
+import MultiplayerFightScreen from '../components/MultiplayerFightScreen'
+import SimulationFightScreen from '../components/SimulationFightScreen'
 import Scoreboard from '../components/Scoreboard';
 import Request from '../helpers/request';
 
@@ -15,6 +20,7 @@ const DaContainer = () => {
   const [computerDa, setComputerDa] = useState(null)
   const [winner, setWinner] = useState(null)
   const [gameFinished, setGameFinished] = useState(null)
+  const [playerTwoDa, setPlayerTwoDa] = useState(null)
 
   const requestAll = function () {
     const request = new Request();
@@ -56,9 +62,13 @@ const DaContainer = () => {
 
   const onDaClicked = function (da) {
     setPlayerDa(da);
-    <Route path="/result" render={() => {
-      return <ResultScreen />
-    }} />
+    // <Route path="/result" render={() => {
+    //   return <ResultScreen />
+    // }} />
+  }
+
+  const onPlayerTwoDaClicked = function (da) {
+    setPlayerTwoDa(da);
   }
 
   const onGameFinished = function (da) {
@@ -103,6 +113,24 @@ const DaContainer = () => {
           <Route path="/fight" render={() => {
             return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} das={das} />
           }} />
+          <Route path="/multiplayerfight" render={() => {
+            return <MultiplayerFightScreen playerDa={playerDa} playerTwoDa={playerTwoDa} onGameFinished={onGameFinished} />
+          }} />
+          <Route path="/simulationfight" render={() => {
+            return <SimulationFightScreen computerDaOne={playerDa} computerDaTwo={playerTwoDa} onGameFinished={onGameFinished} />
+          }} />
+          <Route path="/mode" render={() => {
+            return <ModeScreen />
+          }} />
+          <Route path="/multiplayer" render={() => {
+            return <Multiplayer das={das} onDaClicked={onDaClicked} onPlayerTwoDaClicked={onPlayerTwoDaClicked} />
+          }} />
+          <Route path="/simulation" render={() => {
+            return <Simulation das={das} onDaClicked={onDaClicked} onPlayerTwoDaClicked={onPlayerTwoDaClicked} />
+          }} />
+          {/* <Route path="/result" render={() => {
+          return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
+        }} /> */}
           <Route path="/create-a-da" render={() => {
             return <CreateADa handlePost={handlePost} />
           }} />
