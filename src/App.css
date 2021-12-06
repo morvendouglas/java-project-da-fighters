@@ -31,7 +31,7 @@ body {
   .flex-item  {
     width: 200px;
     height: 200px;
-    padding:  5px 5px 5px 5px ;
+    padding:  2px 2px 2px 2px ;
       }
     
   .flex-item:hover {
@@ -70,3 +70,19 @@ button{
   }
 
   button:hover {opacity: 1}
+
+  .fight_button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -90px;
+    height: 400px;
+    width: 600px;
+}
+  .home_button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 200px;
+}

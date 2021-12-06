@@ -14,11 +14,11 @@ const DaList = ({ das, onDaClicked }) => {
 
 	return (
 		<div >
+		<Link to="/"> <img className="home_button" src={`${process.env.PUBLIC_URL}/logo.png`}></img> </Link>
 		<ul className = "flex-container">
 			{dasNodes}
 		</ul>
-		<Link to="/fight"><button type="button">Fight</button></Link>
-
+		<Link to="/fight"> <img className="fight_button" src={`${process.env.PUBLIC_URL}/SquareGo.png`}></img> </Link>
 		</div>
 	)
 }
