@@ -13,32 +13,32 @@ const CreateADa = ({ handlePost }) => {
             "attackOneName": "",
             "attackTwoName": "",
             "healName": "",
-            "imgName": "",
+            "imgName": "11.png",
             "startingHealth": 100,
             "currentHealth": 100,
             "points": 0
         }
     )
 
+    // const handleClick = function (event) {
+    //     let propertyName = event.target.name;
+    //     let copiedDa = { ...stateDa }
+    //     const daImg1 = "11.png"
+    //     const daImg2 = "12.png"
+    //     const daImg3 = "13.png"
+    //     const randomDaImg = [daImg1, daImg2, daImg3]
+    //     const randomNumber = Math.floor(Math.random() * 3);
+    //     copiedDa[propertyName] = randomDaImg[randomNumber]
+    //     setStateDa(copiedDa)
+    // }
+
     const handleClick = function (event) {
         let propertyName = event.target.name;
         let copiedDa = { ...stateDa }
         const daImg1 = "11.png"
-        const daImg2 = "12.png"
-        const daImg3 = "13.png"
-        const randomDaImg = [daImg1, daImg2, daImg3]
-        const randomNumber = Math.floor(Math.random() * 3);
-        copiedDa[propertyName] = randomDaImg[randomNumber]
+        copiedDa[propertyName] = daImg1
         setStateDa(copiedDa)
     }
-
-    // const handleJensDaClick = function (event) {
-    //     let propertyName = event.target.name;
-    //     let copiedDa = { ...stateDa }
-    //     const daImg1 = "jens-da.png"
-    //     copiedDa[propertyName] = daImg1
-    //     setStateDa(copiedDa)
-    // }
 
     const handleChange = function (event) {
         let propertyName = event.target.name;
@@ -62,8 +62,8 @@ const CreateADa = ({ handlePost }) => {
                 <input type="text" placeholder="⚡ First Attack Name" className="input" name="attackOneName" onChange={handleChange} value={stateDa.attackOneName} />
                 <input type="text" placeholder="⚡ Second Attack Name" className="input" name="attackTwoName" onChange={handleChange} value={stateDa.attackTwoName} />
                 <input type="text" placeholder="⚡ Heal Name" name="healName" className="input" onChange={handleChange} value={stateDa.healName} />
-                <label for="imgName" className="label"></label>
-                <input type="radio" className="radio" name="imgName"  value={stateDa.imgName}onClick={handleClick} defaultChecked></input>
+                {/* <label for="imgName" className="label">Click for da photo ->></label> */}
+                {/* <input type="radio" className="radio" name="imgName"  value={stateDa.imgName} onClick={handleClick}></input> */}
                 <button type="submit" className="submit">Save</button>
             </form>
         </div>
