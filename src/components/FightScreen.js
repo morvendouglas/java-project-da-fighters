@@ -33,10 +33,17 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     const playSound = function () {
         let audio1 = new Audio("/sound1.wav")
         let audio2 = new Audio("/sound2.wav")
+        const randomAudio = [audio1, audio2]
+        const randomNumber = Math.floor(Math.random() * 2);
+        const chosenSound = randomAudio[randomNumber]
+        chosenSound.play()
+    };
+
+    const playComputerSound = function () {
         let audio3 = new Audio("/sound3.wav")
         let audio4 = new Audio("/sound4.wav")
-        const randomAudio = [audio1, audio2, audio3, audio4]
-        const randomNumber = Math.floor(Math.random() * 4);
+        const randomAudio = [audio3, audio4]
+        const randomNumber = Math.floor(Math.random() * 2);
         const chosenSound = randomAudio[randomNumber]
         chosenSound.play()
     };
@@ -44,6 +51,16 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     const playHeal = function () {
         let healAudio = new Audio("/nectar.wav")
         healAudio.play()
+    }
+
+    const playSpecial = function () {
+        let specialSound = new Audio("/dadouken.wav")
+        specialSound.play()
+    }
+
+    const playSpecialFail = function () {
+        let specialFailSound = new Audio("/fail.wav")
+        specialFailSound.play()
     }
 
     const getRandomNumber = function (min, max) {
@@ -78,6 +95,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         setPreviousComputerHealth(computerHealth)
         setComputerHealth(computerHealth => computerHealth - damage)
         console.log("player hit computer for : " + damage);
+        playSound()
         // checkIfGameFinished();
         setGif(true)
         setTimeout(function () {
@@ -130,6 +148,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setPlayerSpecialUsed(true);
                 playerDa.specialName = "Special Used"
                 console.log("player hit computer for : " + opponentDamage);
+                playSpecial();
                 setTimeout(function () {
                     computerTurn()
                 }, 2000)
@@ -139,6 +158,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setPlayerSpecialUsed(true);
                 playerDa.specialName = "Special Used"
                 console.log("player hit themselves for : " + selfDamage);
+                playSpecialFail();
                 setLeftGif(true)
                 setTimeout(function () {
                     setLeftGif(false)
@@ -170,6 +190,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             setTimeout(function () {
                 setGif(false)
             }, 1500)
+            playComputerSound()
         }
         const Attack2 = function () {
             let damage = getRandomNumber(10, 35);
@@ -181,6 +202,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             setTimeout(function () {
                 setGif(false)
             }, 1500)
+            playComputerSound()
         }
         const Heal = function () {
             let heal = 0;
@@ -205,6 +227,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             setTimeout(function () {
                 setHealGif(false)
             }, 1500)
+            playHeal();
         }
         const Special = function () {
             let opponentDamage = 45;
@@ -217,12 +240,17 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setComputerSpecialUsed(true);
                 computerDa.specialName = "Special Used"
                 console.log("computer hit player for : " + opponentDamage);
+                playSpecial();
+                setTimeout(function () {
+                    setRightGif(false)
+                }, 2500)
             } else if (specialOutcome[specialNumber] === selfDamage) {
                 setPreviousComputerHealth(computerHealth)
                 setComputerHealth(computerHealth => computerHealth - selfDamage);
                 setComputerSpecialUsed(true);
                 computerDa.specialName = "Special Used"
                 console.log("computer hit themselves for : " + selfDamage);
+                playSpecialFail();
                 setRightGif(true)
                 setTimeout(function () {
                     setRightGif(false)
