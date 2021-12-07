@@ -149,14 +149,11 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setPlayerSpecialUsed(true);
                 playerDa.specialName = "Special Used"
                 console.log("player hit computer for : " + opponentDamage);
-<<<<<<< HEAD
                 setLeftGif(true)
                 setTimeout(function () {
                     setLeftGif(false)
                 }, 2500)
-=======
                 playSpecial();
->>>>>>> feature/fight_music
                 setTimeout(function () {
                     computerTurn()
                 }, 2000)
@@ -166,12 +163,8 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setPlayerSpecialUsed(true);
                 playerDa.specialName = "Special Used"
                 console.log("player hit themselves for : " + selfDamage);
-<<<<<<< HEAD
-                setStunGif(true)
-=======
                 playSpecialFail();
-                setLeftGif(true)
->>>>>>> feature/fight_music
+                setStunGif(true)
                 setTimeout(function () {
                     setStunGif(false)
                 }, 2500)
@@ -252,11 +245,8 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setComputerSpecialUsed(true);
                 computerDa.specialName = "Special Used"
                 console.log("computer hit player for : " + opponentDamage);
-<<<<<<< HEAD
-                setRightGif(true)
-=======
                 playSpecial();
->>>>>>> feature/fight_music
+                setRightGif(true)
                 setTimeout(function () {
                     setRightGif(false)
                 }, 2500)
@@ -266,12 +256,8 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setComputerSpecialUsed(true);
                 computerDa.specialName = "Special Used"
                 console.log("computer hit themselves for : " + selfDamage);
-<<<<<<< HEAD
-                setStunGif(true)
-=======
                 playSpecialFail();
-                setRightGif(true)
->>>>>>> feature/fight_music
+                setStunGif(true)
                 setTimeout(function () {
                     setStunGif(false)
                 }, 2500)
@@ -384,16 +370,9 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                     <ul className="DaDetails">
                         <li className="name">{playerDa.name}</li>
                         <li className="bio">{playerDa.bio}</li>
-<<<<<<< HEAD
                         <li className="attack1">{playerDa.attackOneName}<button onClick={handleAttack1Click}>ATTACK</button></li>
                         <li className="attack2">{playerDa.attackTwoName}<button onClick={handleAttack2Click}>ATTACK</button></li>
                         <li className="heal">{playerDa.healName}<button onClick={handleHealClick}>HEAL</button></li>
-=======
-                        <li className="attack1">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
-                        <li className="attack2">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
-                        <li className="heal">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
-                        <li className="heal">{playerDa.healName}...  <button onClick={handleSpecialClick}>Special</button></li>
->>>>>>> feature/create-a-da
                     </ul>
                     {previousPlayerHealth > playerHealth ?
                         <CountUp
