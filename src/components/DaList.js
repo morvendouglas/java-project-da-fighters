@@ -13,8 +13,13 @@ const DaList = ({ das, onDaClicked }) => {
 		)
 	})
 
+	// const playFightMusic = function () {
+    //     let fightAudio = new Audio("/main_page_screen.wav")
+    //     fightAudio.play();
+    // }
+
 	return (
-		<div >
+		<div  >
 		<Link to="/"> <img className="home_button" src={`${process.env.PUBLIC_URL}/logo.png`}></img> </Link>
 		<ul className = "flex-container">
 			{dasNodes}

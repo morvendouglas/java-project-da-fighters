@@ -13,7 +13,6 @@ import SimulationFightScreen from '../components/SimulationFightScreen'
 import Scoreboard from '../components/Scoreboard';
 import Request from '../helpers/request';
 
-
 const DaContainer = () => {
   const [das, setDas] = useState([]);
   const [playerDa, setPlayerDa] = useState(null)
@@ -39,6 +38,11 @@ const DaContainer = () => {
   useEffect(() => {
     selectComputerDa()
   }, [playerDa])
+
+//   const playMusic = function () {
+//     let music = new Audio("/main_page_screen.wav")
+//     music.play();
+// }
 
   const handlePost = function (da) {
     const request = new Request();
@@ -108,7 +112,7 @@ const DaContainer = () => {
       <div>
         <Switch>
           <Route path="/select" render={() => {
-            return <DaList classname="DaList" das={das} onDaClicked={onDaClicked} />
+            return <DaList classname="DaList" das={das} onDaClicked={onDaClicked}/>
           }} />
           <Route path="/fight" render={() => {
             return <FightScreen playerDa={playerDa} computerDa={computerDa} onGameFinished={onGameFinished} das={das} />
@@ -132,12 +136,12 @@ const DaContainer = () => {
           return <ResultScreen playerDa={playerDa} computerDa={computerDa} />
         }} /> */}
           <Route path="/create-a-da" render={() => {
-            return <CreateADa handlePost={handlePost} />
+            return <CreateADa handlePost={handlePost}  />
           }} />
           <Route path="/scoreboard/:id" render={(props) => {
             const id = props.match.params.id;
             const da = findDaById(id);
-             return <Scoreboard das={das} handleUpdate={handleUpdate}/> 
+             return <Scoreboard das={das} handleUpdate={handleUpdate} /> 
           }} />
         </Switch>
       </div>
