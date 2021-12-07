@@ -23,22 +23,15 @@ const CreateADa = ({ handlePost }) => {
     // const handleClick = function (event) {
     //     let propertyName = event.target.name;
     //     let copiedDa = { ...stateDa }
-    //     const daImg1 = "11.png"
-    //     const daImg2 = "12.png"
-    //     const daImg3 = "13.png"
+    //     const daImg1 = "12.png"
+    //     const daImg2 = "13.png"
+    //     const daImg3 = "14.png"
     //     const randomDaImg = [daImg1, daImg2, daImg3]
     //     const randomNumber = Math.floor(Math.random() * 3);
     //     copiedDa[propertyName] = randomDaImg[randomNumber]
     //     setStateDa(copiedDa)
     // }
 
-    const handleClick = function (event) {
-        let propertyName = event.target.name;
-        let copiedDa = { ...stateDa }
-        const daImg1 = "11.png"
-        copiedDa[propertyName] = daImg1
-        setStateDa(copiedDa)
-    }
 
     const handleChange = function (event) {
         let propertyName = event.target.name;
@@ -55,7 +48,7 @@ const CreateADa = ({ handlePost }) => {
     return (
         <>
         <div className="first">
-           <img className="img" src={`${process.env.PUBLIC_URL}/DA.png`} onClick={handleClick} height="400px" width="700px"/>
+           <img className="img" src={`${process.env.PUBLIC_URL}/DA.png`} height="400px" width="700px"/>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="⚡ Da Name" name="name" className="input" onChange={handleChange} value={stateDa.name} />
                 <input type="text" placeholder="⚡ Bio" name="bio" className="input" onChange={handleChange} value={stateDa.bio} />

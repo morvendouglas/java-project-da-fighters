@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ScoreboardDa from './ScoreboardDa';
 import ScoreboardPoints from './ScoreboardPoints';
 import '../Scoreboard.css'
@@ -65,31 +66,21 @@ const Scoreboard = ({ das, handleUpdate }) => {
         )
     })
 
-
-    // <div className="scoreboard">
-    //     <form onSubmit={handleSubmit}>
-    //         <button type="submit" disabled={disable}>You have Scored 100 Points - Click to Collect Points </button>
-    //     </form>
-    //     <span>Da League</span><span className="right">Points</span>
-    //     <div>
-    //         {dasNodes}
-    //     </div>
-    // </div>
-
     return (
         <div >
-            <form onSubmit={handleSubmit}>
-                <button type="submit" disabled={disable} className="buttonScoreboard">You have Scored 100 Points - Click to Collect Points </button>
-            </form>
             <table className="scoreboard">
                 <thead >
                     <tr>
-                        <th colspan={das.length} className="header">SCOREBOARD</th>
+                    <th colspan={das.length} className="header">
+                        <form onSubmit={handleSubmit}>
+                            <button type="submit" disabled={disable} className="buttonScoreboard">Collect Points </button>
+                        </form>
+                    </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span className="daName">Da</span></td>
+                        <td><span className="daName">Da League</span></td>
                         <td><span className="daPoints">Points</span></td>
                     </tr>
                     <tr>
@@ -99,7 +90,10 @@ const Scoreboard = ({ das, handleUpdate }) => {
                     </tr>
                 
                 </tbody>
+        
             </table>
+        
+            <Link to="/"> <img className="home" src={`${process.env.PUBLIC_URL}/logo.png`}></img> </Link>
         </div>
     )
 }

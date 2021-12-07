@@ -1,8 +1,6 @@
 .scoreboard {
-    font-size: x-large;
-    color: black;
-    background-color: lightgrey;
-    margin-top: 3vh;
+    font-size: large;
+    color: white;
     padding: 15px;
     margin: auto;
 }
@@ -14,6 +12,7 @@
 
 .countUpGreen {
     color: green;
+    font-size: 26px;
 }
 
 .daName {
@@ -27,9 +26,19 @@
 }
 
 .buttonScoreboard {
-    margin-left: 35%;
-    margin-top: 3%;
-    margin-bottom: 3%;
+    font-size: large;
+    width: auto;
 }
 
+.home {
+    margin-top: 30px;
+}
+.home{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 200px;
+    margin-top: 16vh;
+}
 
