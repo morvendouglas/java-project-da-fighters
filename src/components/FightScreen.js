@@ -27,7 +27,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     }, [computerHealth, playerHealth])
 
     const playAudio = function () {
-        let music = new Audio ("/game_music.wav")
+        let music = new Audio("/game_music.wav")
         music.play()
     }
 
@@ -64,48 +64,86 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         specialFailSound.play()
     }
 
+    const playMiss = function () {
+        let missSound = new Audio("/miss.wav")
+        missSound.play()
+    }
+
     const getRandomNumber = function (min, max) {
         return Math.floor(Math.random() * ((max - min) + 1) + min);
     }
 
+    const getMissChance = function () {
+        let hit = true
+        let miss = false
+        const missChance = [hit, hit, hit, hit, miss]
+        const randomNumber = Math.floor(Math.random() * 5)
+        const missOutcome = missChance[randomNumber]
+        return missOutcome;
+    }
+
+    const getMissChanceHeavy = function () {
+        let hit = true
+        let miss = false
+        const missChance = [hit, hit, hit, miss]
+        const randomNumber = Math.floor(Math.random() * 4)
+        const missOutcome = missChance[randomNumber]
+        return missOutcome;
+    }
+
     const handleAttack1Click = function () {
-        let damage = 0;
-        if (playerDa.daType === "BUFFDA") {
-            damage = getRandomNumber(18, 30)
-        } else if (playerDa.daType === "AVERAGEDA") {
-            damage = getRandomNumber(23, 25)
+        if (getMissChance() === true) {
+            console.log(getMissChance());
+            let damage = 0;
+            if (playerDa.daType === "BUFFDA") {
+                damage = getRandomNumber(18, 30)
+            } else if (playerDa.daType === "AVERAGEDA") {
+                damage = getRandomNumber(23, 25)
+            } else {
+                damage = getRandomNumber(18, 25)
+            }
+            setPreviousComputerHealth(computerHealth)
+            setComputerHealth(computerHealth => computerHealth - damage)
+            console.log("player hit computer for : " + damage);
+            playSound()
+            setGif(true)
+            setTimeout(function () {
+                setGif(false)
+            }, 1500)
+            setTimeout(function () {
+                computerTurn()
+            }, 2000)
         } else {
-            damage = getRandomNumber(18, 25)
+            playMiss()
+            setTimeout(function () {
+                computerTurn()
+            }, 2000)
         }
-        setPreviousComputerHealth(computerHealth)
-        setComputerHealth(computerHealth => computerHealth - damage)
-        console.log("player hit computer for : " + damage);
-        playSound()
-        // checkIfGameFinished()
-        setGif(true)
-        setTimeout(function () {
-            setGif(false)
-        }, 1500)
-        setTimeout(function () {
-            computerTurn()
-        }, 2000)
     }
 
     const handleAttack2Click = function () {
-        let damage = getRandomNumber(10, 35);
-        setPreviousComputerHealth(computerHealth)
-        setComputerHealth(computerHealth => computerHealth - damage)
-        console.log("player hit computer for : " + damage);
-        playSound()
-        // checkIfGameFinished();
-        setGif(true)
-        setTimeout(function () {
-            setGif(false)
-        }, 1500)
-        setTimeout(function () {
-            computerTurn()
-        }, 2000)
+        if (getMissChanceHeavy() === true) {
+            let damage = getRandomNumber(10, 35);
+            setPreviousComputerHealth(computerHealth)
+            setComputerHealth(computerHealth => computerHealth - damage)
+            console.log("player hit computer for : " + damage);
+            playSound()
+            // checkIfGameFinished();
+            setGif(true)
+            setTimeout(function () {
+                setGif(false)
+            }, 1500)
+            setTimeout(function () {
+                computerTurn()
+            }, 2000)
+        } else {
+            playMiss()
+            setTimeout(function () {
+                computerTurn()
+            }, 2000)
+        }
     }
+
 
     const handleHealClick = function () {
         let heal = 0;
@@ -179,35 +217,43 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
     const computerTurn = function () {
         const Attack1 = function () {
-            let damage = 0;
-            if (computerDa.daType === "BUFFDA") {
-                damage = getRandomNumber(18, 30)
-            } else if (computerDa.daType === "AVERAGEDA") {
-                damage = getRandomNumber(23, 25)
-            } else {
-                damage = getRandomNumber(18, 25)
+            if (getMissChance === true) {
+                let damage = 0;
+                if (computerDa.daType === "BUFFDA") {
+                    damage = getRandomNumber(18, 30)
+                } else if (computerDa.daType === "AVERAGEDA") {
+                    damage = getRandomNumber(23, 25)
+                } else {
+                    damage = getRandomNumber(18, 25)
+                }
+                setPreviousPlayerHealth(playerHealth)
+                setPlayerHealth(playerHealth => playerHealth - damage)
+                console.log("computer hit player for : " + damage);
+                // checkIfGameFinished();
+                setGif(true)
+                setTimeout(function () {
+                    setGif(false)
+                }, 1500)
+                playComputerSound()
+            }else{
+                playMiss()
             }
-            setPreviousPlayerHealth(playerHealth)
-            setPlayerHealth(playerHealth => playerHealth - damage)
-            console.log("computer hit player for : " + damage);
-            // checkIfGameFinished();
-            setGif(true)
-            setTimeout(function () {
-                setGif(false)
-            }, 1500)
-            playComputerSound()
         }
         const Attack2 = function () {
-            let damage = getRandomNumber(10, 35);
-            setPreviousPlayerHealth(playerHealth)
-            setPlayerHealth(playerHealth => playerHealth - damage);
-            console.log("computer hit player for : " + damage);
-            // checkIfGameFinished();
-            setGif(true)
-            setTimeout(function () {
-                setGif(false)
-            }, 1500)
-            playComputerSound()
+            if (getMissChanceHeavy === true) {
+                let damage = getRandomNumber(10, 35);
+                setPreviousPlayerHealth(playerHealth)
+                setPlayerHealth(playerHealth => playerHealth - damage);
+                console.log("computer hit player for : " + damage);
+                // checkIfGameFinished();
+                setGif(true)
+                setTimeout(function () {
+                    setGif(false)
+                }, 1500)
+                playComputerSound()
+            }else{
+                playMiss()
+            }
         }
         const Heal = function () {
             let heal = 0;
@@ -341,7 +387,6 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="200px" width="200px" />
     }
 
-
     const showFist = function () {
         return <img src={`${process.env.PUBLIC_URL}/fist.gif`} alt="fist" height="100px" width="100px" />
     }
@@ -396,7 +441,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
                 <div>
                     <img className="CPUImage" src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} alt="da-fighter" />
-                    <ul className = "DaDetails">
+                    <ul className="DaDetails">
                         <li className="CPUName">{computerDa.name}</li>
                         <li className="CPUBio">{computerDa.bio}</li>
                         <li className="CPUAttack1">{computerDa.attackOneName}  <button>ATTACK</button></li>
