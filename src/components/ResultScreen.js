@@ -2,7 +2,35 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import FinishScreen from './FinishScreen';
 
-const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onChooseNextRandomDa, onPlayerDaContinue, onNewDasList, onAllDasBeaten }) => {
+const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onChooseNextRandomDa, onPlayerDaContinue, onNewDasList, onAllDasBeaten, messages }) => {
+
+    const findWinMessage = function () {
+        const copyMessages = [...messages]
+        // for(var i = 0; i < winMessages; i++) {
+        //     if(winMessages[i].messageType === "LOSE") {
+        //         winMessages.splice(i, 1)
+        //     }
+        // }
+        const winMessages = copyMessages.filter((message) => {
+            return message.messageType === "WIN"
+        })
+        const randomIndexWin = Math.floor(Math.random() * winMessages.length)
+        const randomWinMessage = winMessages[randomIndexWin]
+        return randomWinMessage.comment
+
+    }
+
+    const findLoseMessage = function () {
+        const loseMessages = [...messages]
+        for(var i = 0; i < loseMessages; i++) {
+            if(loseMessages[i].messageType === "WIN") {
+                loseMessages.splice(i, 1)
+            }
+        }
+        const randomIndexLose = Math.floor(Math.random() * loseMessages.length)
+        const randomLoseMessage = loseMessages[randomIndexLose]
+        return randomLoseMessage.comment
+    }
 
     const handleOnClick = function () {
         onGameFinished(null);
@@ -36,6 +64,7 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
             {winner.name === playerDa.name ?
                 <div>
                     <h2> You battered them !</h2>
+                    <h2> {findWinMessage()}</h2>
                     {das.length < 2 ?
                         <button type="button" onClick={handleOnNextDaClick}>Mon then ...</button>
                         :
@@ -47,6 +76,7 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
                 :
                 <div>
                     <h2> You got smashed ...</h2>
+                    <h2> {findLoseMessage()}</h2>
                     <Link to="/select"><button type="button" onClick={handleOnClick}>Play again ...</button></Link>
                 </div>
             }
