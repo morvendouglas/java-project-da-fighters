@@ -1,21 +1,35 @@
 .scoreboard {
-    border: 1px solid white;
     font-size: x-large;
-    color: white;
-    padding: 3vh;
-    padding: 3vw;
+    color: black;
+    background-color: lightgrey;
+    margin-top: 3vh;
+    padding: 15px;
+    margin: auto;
+}
+
+.header {
+ color: black;
+ padding-bottom: 4vh;
 }
 
 .countUpGreen {
     color: green;
 }
 
-.padding {
-    margin-right: 1vw;
+.daName {
+    padding-right: 5vw;
+    margin: 1vw;
 }
 
-.da {
+.daPoints {
     padding-right: 5vw;
+    margin: 0.4vw;
+}
+
+.buttonScoreboard {
+    margin-left: 35%;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 
 

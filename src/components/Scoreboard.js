@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ScoreBoardDa from './ScoreboardDa';
+import ScoreboardDa from './ScoreboardDa';
 import ScoreboardPoints from './ScoreboardPoints';
 import '../Scoreboard.css'
 
@@ -55,7 +55,7 @@ const Scoreboard = ({ das, handleUpdate }) => {
 
     const dasNodes = das.map((da, index) => {
         return (
-            <ScoreBoardDa da={da} key={index} />
+            <ScoreboardDa da={da} key={index} />
         )
     })
 
@@ -79,7 +79,7 @@ const Scoreboard = ({ das, handleUpdate }) => {
     return (
         <div >
             <form onSubmit={handleSubmit}>
-                <button type="submit" disabled={disable}>You have Scored 100 Points - Click to Collect Points </button>
+                <button type="submit" disabled={disable} className="buttonScoreboard">You have Scored 100 Points - Click to Collect Points </button>
             </form>
             <table className="scoreboard">
                 <thead >
@@ -89,11 +89,11 @@ const Scoreboard = ({ das, handleUpdate }) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Da</td>
-                        <td>Points</td>
+                        <td><span className="daName">Da</span></td>
+                        <td><span className="daPoints">Points</span></td>
                     </tr>
                     <tr>
-                        <td className="da">{dasNodes}</td>
+                        <td>{dasNodes}</td>
                         <td>{daPoints}</td>
     
                     </tr>
