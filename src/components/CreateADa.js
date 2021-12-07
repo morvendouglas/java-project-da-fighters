@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../CreateADa.css'
 
 const CreateADa = ({ handlePost }) => {
 
@@ -42,20 +43,23 @@ const CreateADa = ({ handlePost }) => {
         event.preventDefault();
         handlePost(stateDa); 
     }
+     const lightening = "\u26a1"
 
     return (
         <>
-            <h3>Create A Da</h3>
+        <div className="first">
+           <img className="img" src={`${process.env.PUBLIC_URL}/DA.png`} onClick={handleClick} height="400px" width="700px"/>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Name" name="name" onChange={handleChange} value={stateDa.name} />
-                <input type="text" placeholder="Bio" name="bio" onChange={handleChange} value={stateDa.bio} />
-                <input type="text" placeholder="First Attack" name="attackOneName" onChange={handleChange} value={stateDa.attackOneName} />
-                <input type="text" placeholder="Second Attack" name="attackTwoName" onChange={handleChange} value={stateDa.attackTwoName} />
-                <input type="text" placeholder="Heal" name="healName" onChange={handleChange} value={stateDa.healName} />
-                <label for="imgName" className="health">Click for your da's photo</label>
-                <input type="radio" id="imgName" name="imgName" value={stateDa.imgName}onClick={handleClick}></input>
-                <button type ="submit">Save</button>
+                <input type="text" placeholder="⚡ Da Name" name="name" className="input" onChange={handleChange} value={stateDa.name} />
+                <input type="text" placeholder="⚡ Bio" name="bio" className="input" onChange={handleChange} value={stateDa.bio} />
+                <input type="text" placeholder="⚡ First Attack Name" className="input" name="attackOneName" onChange={handleChange} value={stateDa.attackOneName} />
+                <input type="text" placeholder="⚡ Second Attack Name" className="input" name="attackTwoName" onChange={handleChange} value={stateDa.attackTwoName} />
+                <input type="text" placeholder="⚡ Heal Name" name="healName" className="input" onChange={handleChange} value={stateDa.healName} />
+                <label for="imgName" className="label"></label>
+                <input type="radio" className="radio" name="imgName"  value={stateDa.imgName}onClick={handleClick} defaultChecked></input>
+                <button type="submit" className="submit">Save</button>
             </form>
+        </div>
         </>
 
     )
