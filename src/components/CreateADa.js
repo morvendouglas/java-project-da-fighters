@@ -51,7 +51,6 @@ const CreateADa = ({ handlePost }) => {
         event.preventDefault();
         handlePost(stateDa); 
     }
-     const lightening = "\u26a1"
 
     return (
         <>
