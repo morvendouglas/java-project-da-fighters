@@ -1,16 +1,15 @@
 import React from 'react';
-import CountUp from 'react-countup';
-import '../App.css'
+import '../Scoreboard.css'
 
-const ScoreBoardDa = ({ da }) => {
+const ScoreboardDa = ({ da }) => {
 
 
   return (
 
-    <div claasName="padding">
+    <div className="daName">
       {da.name}
     </div>
   )
 }
 
-export default ScoreBoardDa;
+export default ScoreboardDa;

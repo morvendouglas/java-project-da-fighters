@@ -1,21 +1,44 @@
 .scoreboard {
-    border: 1px solid white;
-    font-size: x-large;
+    font-size: large;
     color: white;
-    padding: 3vh;
-    padding: 3vw;
+    padding: 15px;
+    margin: auto;
+}
+
+.header {
+ color: black;
+ padding-bottom: 4vh;
 }
 
 .countUpGreen {
     color: green;
+    font-size: 26px;
 }
 
-.padding {
-    margin-right: 1vw;
-}
-
-.da {
+.daName {
     padding-right: 5vw;
+    margin: 1vw;
 }
 
+.daPoints {
+    padding-right: 5vw;
+    margin: 0.4vw;
+}
+
+.buttonScoreboard {
+    font-size: large;
+    width: auto;
+}
+
+.home {
+    margin-top: 30px;
+}
+.home{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 200px;
+    margin-top: 16vh;
+}
 

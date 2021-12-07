@@ -16,6 +16,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     const [leftGif, setLeftGif] = useState(false)
     const [rightGif, setRightGif] = useState(false)
     const [healGif, setHealGif] = useState(false)
+    const [stunGif, setStunGif] = useState(false)
 
     useEffect(() => {
         if (computerHealth <= 0 & playerHealth > 0) {
@@ -125,6 +126,10 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setPlayerSpecialUsed(true);
                 playerDa.specialName = "Special Used"
                 console.log("player hit computer for : " + opponentDamage);
+                setLeftGif(true)
+                setTimeout(function () {
+                    setLeftGif(false)
+                }, 2500)
                 setTimeout(function () {
                     computerTurn()
                 }, 2000)
@@ -134,9 +139,9 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setPlayerSpecialUsed(true);
                 playerDa.specialName = "Special Used"
                 console.log("player hit themselves for : " + selfDamage);
-                setLeftGif(true)
+                setStunGif(true)
                 setTimeout(function () {
-                    setLeftGif(false)
+                    setStunGif(false)
                 }, 2500)
                 setTimeout(function () {
                     computerTurn()
@@ -212,15 +217,19 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setComputerSpecialUsed(true);
                 computerDa.specialName = "Special Used"
                 console.log("computer hit player for : " + opponentDamage);
+                setRightGif(true)
+                setTimeout(function () {
+                    setRightGif(false)
+                }, 2500)
             } else if (specialOutcome[specialNumber] === selfDamage) {
                 setPreviousComputerHealth(computerHealth)
                 setComputerHealth(computerHealth => computerHealth - selfDamage);
                 setComputerSpecialUsed(true);
                 computerDa.specialName = "Special Used"
                 console.log("computer hit themselves for : " + selfDamage);
-                setRightGif(true)
+                setStunGif(true)
                 setTimeout(function () {
-                    setRightGif(false)
+                    setStunGif(false)
                 }, 2500)
             }
         }
@@ -302,14 +311,19 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="200px" width="200px" />
     }
 
+
     const showFist = function () {
         return <img src={`${process.env.PUBLIC_URL}/fist.gif`} alt="fist" height="100px" width="100px" />
-
     }
 
     const showHeal = function () {
-        return <img src={`${process.env.PUBLIC_URL}/icegif-1029.gif`} alt="fist" height="100px" width="100px" />
+        return <img src={`${process.env.PUBLIC_URL}/street-fighter-zangief.gif`} alt="fist" height="100px" width="100px" />
     }
+
+    const showStun = function () {
+        return <img src={`${process.env.PUBLIC_URL}/balrog-diz.gif`} alt="fist" height="100px" width="100px" />
+    }
+
 
 
     if (gameFinished === false) {
@@ -326,9 +340,16 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                     <ul className = "DaDetails">
                         <li className="name">{playerDa.name}</li>
                         <li className="bio">{playerDa.bio}</li>
+<<<<<<< HEAD
                         <li className="attack1">{playerDa.attackOneName}<button onClick={handleAttack1Click}>ATTACK</button></li>
                         <li className="attack2">{playerDa.attackTwoName}<button onClick={handleAttack2Click}>ATTACK</button></li>
                         <li className="heal">{playerDa.healName}<button onClick={handleHealClick}>HEAL</button></li>
+=======
+                        <li className="attack1">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
+                        <li className="attack2">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
+                        <li className="heal">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
+                        <li className="heal">{playerDa.healName}...  <button onClick={handleSpecialClick}>Special</button></li>
+>>>>>>> feature/create-a-da
                     </ul>
                     {previousPlayerHealth > playerHealth ?
                         <CountUp
@@ -348,6 +369,8 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 {rightGif === true ? showGifRight() : null}
                 {healGif === true ? showHeal() : null}
                 {gif === true ? showFist() : null}
+                {stunGif === true ? showStun() : null}
+
                 <div>
                     <img className="CPUImage" src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} alt="da-fighter" />
                     <ul className = "DaDetails">

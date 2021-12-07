@@ -7,7 +7,7 @@ const ScoreboardPoints = ({ da }) => {
 
   return (
    
-    <div>
+    <div className="daPoints">
       <CountUp
         className="countUpGreen"
         start={0}
