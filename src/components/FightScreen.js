@@ -349,7 +349,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 {healGif === true ? showHeal() : null}
                 {gif === true ? showFist() : null}
                 <div>
-                    <img src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} alt="da-fighter" width="220" height="250" />
+                    <img className="CPUImage" src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} alt="da-fighter" />
                     <ul>
                         <li className="CPUName">{computerDa.name}</li>
                         <li className="CPUBio">{computerDa.bio}</li>

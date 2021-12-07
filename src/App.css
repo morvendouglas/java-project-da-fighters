@@ -78,6 +78,7 @@ button{
     height: 400px;
     width: 600px;
 }
+
   .home_button{
     display: flex;
     margin-left: auto;
@@ -97,9 +98,11 @@ button{
   overflow: hidden;
 }
 .DaFightImg{
+  position: fixed;
+  margin-left: 180px;
+  margin-top: 90px;
   height: 200px;
   width: 200px;
-  padding: 200px;
 }
 
 .DaDetails {
@@ -111,7 +114,6 @@ button{
 .name{
   color: white;
   font-size: xx-large;
-  margin-top: -250px;
   margin-right: 100px;
 }
 .bio{
@@ -127,6 +129,15 @@ button{
 .heal{
   color: white;
 }
+
+.CPUImage{
+  float: right;
+  margin-top: -400px;
+  margin-right: 180px;
+  height: 200px;
+  width: 200px;
+  }
+
 .CPUName{
   color: white;
   margin-top: 200px;
