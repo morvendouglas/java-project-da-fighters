@@ -326,19 +326,19 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                     <ul className = "DaDetails">
                         <li className="name">{playerDa.name}</li>
                         <li className="bio">{playerDa.bio}</li>
-                        <li className="attack1">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
-                        <li className="attack2">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
-                        <li className="heal">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
+                        <li className="attack1">{playerDa.attackOneName}<button onClick={handleAttack1Click}>ATTACK</button></li>
+                        <li className="attack2">{playerDa.attackTwoName}<button onClick={handleAttack2Click}>ATTACK</button></li>
+                        <li className="heal">{playerDa.healName}<button onClick={handleHealClick}>HEAL</button></li>
                     </ul>
                     {previousPlayerHealth > playerHealth ?
                         <CountUp
-                            className="countUpRed"
+                            className="countUpRedP1"
                             start={previousPlayerHealth}
                             end={playerHealth}
                             duration="1"
                         /> :
                         <CountUp
-                            className="countUpGreen"
+                            className="countUpGreenP1"
                             start={previousPlayerHealth}
                             end={playerHealth}
                             duration="1"
@@ -350,23 +350,23 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 {gif === true ? showFist() : null}
                 <div>
                     <img className="CPUImage" src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} alt="da-fighter" />
-                    <ul>
+                    <ul className = "DaDetails">
                         <li className="CPUName">{computerDa.name}</li>
                         <li className="CPUBio">{computerDa.bio}</li>
-                        <li className="CPUAttack1">{computerDa.attackOneName}...  <button>ATTACK</button></li>
-                        <li className="CPUAttack2">{computerDa.attackTwoName}...  <button>ATTACK</button></li>
-                        <li className="CPUHeal">{computerDa.healName}...  <button>HEAL</button></li>
+                        <li className="CPUAttack1">{computerDa.attackOneName}  <button>ATTACK</button></li>
+                        <li className="CPUAttack2">{computerDa.attackTwoName}  <button>ATTACK</button></li>
+                        <li className="CPUHeal">{computerDa.healName}  <button>HEAL</button></li>
                     </ul>
 
                     {previousComputerHealth > computerHealth ?
                         <CountUp
-                            className="countUpRed"
+                            className="countUpRedCPU"
                             start={previousComputerHealth}
                             end={computerHealth}
                             duration="1"
                         /> :
                         <CountUp
-                            className="countUpGreen"
+                            className="countUpGreenCPU"
                             start={previousComputerHealth}
                             end={computerHealth}
                             duration="1"

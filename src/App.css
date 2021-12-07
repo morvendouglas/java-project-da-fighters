@@ -42,15 +42,40 @@ body {
     box-sizing: border-box;
   }
 
-.countUpRed {
-    color: red;
-    font-size: xx-large;
+.countUpRedP1 {
+  color: red;
+  font-size:50pt;
+  margin-bottom: -100px;
+  margin-left: 250px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.countDownRedCPU {
+  color: red;
+  font-size:50pt;
+  margin-top: 40px;
+  margin-right: 250px;
+  float: right;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.countUpGreen {
+.countUpGreenP1 {
+  color: green;
+  font-size:50pt;
+  margin-left: 240px;
+  margin-bottom:-200px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  }
+
+  .countUpGreenCPU {
     color: green;
-    font-size: xx-large;
-}
+    font-size:50pt;
+    margin-top: 50px;
+    margin-right: 250px;
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
 
 button{
     background-color: #e05f14;
@@ -98,7 +123,7 @@ button{
   overflow: hidden;
 }
 .DaFightImg{
-  position: fixed;
+  /* position: fixed; */
   margin-left: 180px;
   margin-top: 90px;
   height: 200px;
@@ -108,52 +133,72 @@ button{
 .DaDetails {
   list-style:none;
   font-family: Arial, Helvetica, sans-serif;
-  list-style:none;
-  padding-right: 300px;
 } 
 .name{
   color: white;
-  font-size: xx-large;
-  margin-right: 100px;
+  font-size: x-large;
+  margin-top: 20px;
+  margin-left: 110px;
 }
 .bio{
-  color: white;
-  max-width: 400px;
+  margin-top: 20px;
+  color: black;
+  max-width: 320px;
+  margin-left: 90px;
+  text-align: center;
 }
 .attack1{
-  color: white;
+  margin-left: 90px;
+  color: black;
 }
 .attack2{
-  color: white;
+  margin-left: 90px;
+  color: black;
 }
 .heal{
-  color: white;
+  margin-left: 90px;
+  color: black;
 }
 
 .CPUImage{
-  float: right;
-  margin-top: -400px;
-  margin-right: 180px;
-  height: 200px;
+  /* position: fixed; */
+margin-left: 1020px;
+height: 200px;
   width: 200px;
   }
 
 .CPUName{
+  float: right;
   color: white;
-  margin-top: 200px;
-  font-size: xx-large;
-  margin-left: 10px;
+  font-size: x-large;
+  margin-top: -360px;
+  margin-right: 200px;
+  text-align: center;
+
 }
 .CPUBio{
-  color: white;
-  max-width: 400px;
+  float: right;
+  color: black;
+  max-width: 320px;
+  margin-top: -300px;
+  margin-right: 140px;
+  text-align: center;
 }
 .CPUAttack1{
-  color: white;
+  float: right;
+  color: black;
+  margin-top: -220px;
+  margin-right: 140px;
 }
 .CPUAttack2{
-  color: white;
-}
+  float: right;
+  color: black;
+  margin-top: -170px;
+  margin-right: 140px;
+} 
 .CPUHeal{
-  color: white;
+  float: right;
+  color: black;
+  margin-top: -120px;
+  margin-right: 140px;
 }

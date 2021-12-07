@@ -5,10 +5,10 @@ const ModeScreen = () => {
 
     return (
         <div>
-            <h1 className="health">This is the ModeScreen</h1>
-            <Link to="/select"><button type="button">Single Player</button></Link>
-            <Link to="/multiplayer"><button type="button">Multiplayer</button></Link>
-            <Link to="/simulation"><button type="button">Simulation</button></Link>
+            <Link to="/select"> <img className="fight_button" src={`${process.env.PUBLIC_URL}/pvc.png`}></img> </Link>
+            <Link to="/multiplayer"> <img className="fight_button" src={`${process.env.PUBLIC_URL}/pvp.png`}></img> </Link>
+            <Link to="/simulation"> <img className="fight_button" src={`${process.env.PUBLIC_URL}/cvc.png`}></img> </Link>
+
         </div>
     )
 }
