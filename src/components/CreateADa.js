@@ -23,14 +23,22 @@ const CreateADa = ({ handlePost }) => {
     const handleClick = function (event) {
         let propertyName = event.target.name;
         let copiedDa = { ...stateDa }
-        const daImg1 = "obama.jpg"
-        const daImg2 = "jackie-chan.jpg"
-        const daImg3 = "ned.jpg"
+        const daImg1 = "11.png"
+        const daImg2 = "12.png"
+        const daImg3 = "13.png"
         const randomDaImg = [daImg1, daImg2, daImg3]
         const randomNumber = Math.floor(Math.random() * 3);
         copiedDa[propertyName] = randomDaImg[randomNumber]
         setStateDa(copiedDa)
     }
+
+    // const handleJensDaClick = function (event) {
+    //     let propertyName = event.target.name;
+    //     let copiedDa = { ...stateDa }
+    //     const daImg1 = "jens-da.png"
+    //     copiedDa[propertyName] = daImg1
+    //     setStateDa(copiedDa)
+    // }
 
     const handleChange = function (event) {
         let propertyName = event.target.name;
