@@ -57,8 +57,8 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
             <h1 className="results">{winner.name} Won !</h1>
             {winner.name === playerDa.name ?
                 <div>
-                    <h2 className="results"> You battered them !</h2>
-                    <h2 className="results"> {findWinMessage()}</h2>
+                    <h2> You battered them !</h2>
+                    <h2> Some say {computerDa.name} {findWinMessage()}</h2>
                     {das.length < 2 ?
                         <button  className="resultsbutton" type="button" onClick={handleOnNextDaClick}>Mon then ...</button>
                         :
@@ -69,9 +69,9 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
                 </div>
                 :
                 <div>
-                    <h2 className="results" > You got smashed ...</h2>
-                    <h2 className="results"> {findLoseMessage()}</h2>
-                    <Link to="/select"><button className="resultsbutton" type="button" onClick={handleOnClick}>Play again ...</button></Link>
+                    <h2> You got smashed ...</h2>
+                    <h2> He's saying {findLoseMessage()}</h2>
+                    <Link to="/select"><button type="button" onClick={handleOnClick}>Play again ...</button></Link>
                     <img className="resultsgif" height="600" src={`${process.env.PUBLIC_URL}/resultsgif.gif`} />
 
                 </div>

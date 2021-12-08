@@ -77,8 +77,8 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     const getMissChance = function () {
         let hit = true
         let miss = false
-        const missChance = [hit, hit, hit, hit, miss]
-        const randomNumber = Math.floor(Math.random() * 5)
+        const missChance = [hit, hit, hit, hit, hit, hit, hit, hit, hit, miss]
+        const randomNumber = Math.floor(Math.random() * 10)
         const missOutcome = missChance[randomNumber]
         return missOutcome;
     }
@@ -393,7 +393,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     }
 
     const showHeal = function () {
-        return <img src={`${process.env.PUBLIC_URL}/street-fighter-zangief.gif`} alt="fist" height="180px" width="180px" />
+        return <img src={`${process.env.PUBLIC_URL}/nectar.gif`} alt="fist" height="180px" width="180px" />
     }
 
     const showStun = function () {
