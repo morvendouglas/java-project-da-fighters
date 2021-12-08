@@ -51,25 +51,27 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
     }
 
     return (
+        
         <div className="health">
-            <h1>{winner.name} Won !</h1>
+        <Link to="/"> <img className="home_button" src={`${process.env.PUBLIC_URL}/logo.png`}></img> </Link>
+            <h1 className="results">{winner.name} Won !</h1>
             {winner.name === playerDa.name ?
                 <div>
-                    <h2> You battered them !</h2>
-                    <h2> {findWinMessage()}</h2>
+                    <h2 className="results"> You battered them !</h2>
+                    <h2 className="results"> {findWinMessage()}</h2>
                     {das.length < 2 ?
-                        <button type="button" onClick={handleOnNextDaClick}>Mon then ...</button>
+                        <button  className="resultsbutton" type="button" onClick={handleOnNextDaClick}>Mon then ...</button>
                         :
                         <Link to="/fight">
-                            <button type="button" onClick={handleOnNextDaClick}>Mon then ...</button>
+                            <button className="resultsbutton" type="button" onClick={handleOnNextDaClick}>Mon then ...</button>
                         </Link>
                     }
                 </div>
                 :
                 <div>
-                    <h2> You got smashed ...</h2>
-                    <h2> {findLoseMessage()}</h2>
-                    <Link to="/select"><button type="button" onClick={handleOnClick}>Play again ...</button></Link>
+                    <h2 className="results" > You got smashed ...</h2>
+                    <h2 className="results"> {findLoseMessage()}</h2>
+                    <Link to="/select"><button className="resultsbutton" type="button" onClick={handleOnClick}>Play again ...</button></Link>
                 </div>
             }
         </div>

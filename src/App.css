@@ -346,3 +346,18 @@ text-align: center;
   background-color: black;
 }
 
+.results{
+  text-align: center;
+  font-size: 30pt;
+  
+}
+
+.resultsbutton{
+  display: flex;
+  justify-content: center;
+  margin-left: 650px;
+  padding: 15px;
+  font-size: large;
+  font-weight: bold;
+}
+
