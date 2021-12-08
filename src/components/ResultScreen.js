@@ -6,29 +6,21 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
 
     const findWinMessage = function () {
         const copyMessages = [...messages]
-        // for(var i = 0; i < winMessages; i++) {
-        //     if(winMessages[i].messageType === "LOSE") {
-        //         winMessages.splice(i, 1)
-        //     }
-        // }
         const winMessages = copyMessages.filter((message) => {
             return message.messageType === "WIN"
         })
         const randomIndexWin = Math.floor(Math.random() * winMessages.length)
         const randomWinMessage = winMessages[randomIndexWin]
         return randomWinMessage.comment
-
     }
 
     const findLoseMessage = function () {
-        const loseMessages = [...messages]
-        for(var i = 0; i < loseMessages; i++) {
-            if(loseMessages[i].messageType === "WIN") {
-                loseMessages.splice(i, 1)
-            }
-        }
-        const randomIndexLose = Math.floor(Math.random() * loseMessages.length)
-        const randomLoseMessage = loseMessages[randomIndexLose]
+        const copyMessages = [...messages]
+        const loseMessages = copyMessages.filter((message) => {
+            return message.messageType === "LOSE"
+        })
+        const randomIndexWin = Math.floor(Math.random() * loseMessages.length)
+        const randomLoseMessage = loseMessages[randomIndexWin]
         return randomLoseMessage.comment
     }
 
