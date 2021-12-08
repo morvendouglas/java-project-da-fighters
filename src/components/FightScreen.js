@@ -77,8 +77,8 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     const getMissChance = function () {
         let hit = true
         let miss = false
-        const missChance = [hit, hit, hit, hit, miss]
-        const randomNumber = Math.floor(Math.random() * 5)
+        const missChance = [hit, hit, hit, hit, hit, hit, hit, hit, hit, miss]
+        const randomNumber = Math.floor(Math.random() * 10)
         const missOutcome = missChance[randomNumber]
         return missOutcome;
     }
