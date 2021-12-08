@@ -73,7 +73,7 @@ const Scoreboard = ({ das, handleUpdate }) => {
                     <tr>
                     <th colspan={das.length} className="header">
                         <form onSubmit={handleSubmit}>
-                            <button type="submit" disabled={disable} className="buttonScoreboard">Collect Points </button>
+                            <button type="submit" disabled={disable} className="buttonScoreboard">Collect Points</button>
                         </form>
                     </th>
                     </tr>

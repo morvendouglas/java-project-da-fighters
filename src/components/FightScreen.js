@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
 import '../App.css'
+import '../FightScreen.css'
 
 
 const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
@@ -374,7 +375,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         const randomDaImg = [daImg2, daImg3]
         const randomNumber = Math.floor(Math.random() * 2);
         const img = randomDaImg[randomNumber]
-        return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="200px" width="200px" />
+        return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="180px" width="180px" />
     }
 
     const showGifRight = function () {
@@ -384,19 +385,19 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         const randomDaImg = [daImg1, daImg2, daImg3]
         const randomNumber = Math.floor(Math.random() * 3);
         const img = randomDaImg[randomNumber]
-        return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="200px" width="200px" />
+        return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="180px" width="180px" />
     }
 
     const showFist = function () {
-        return <img src={`${process.env.PUBLIC_URL}/fist.gif`} alt="fist" height="100px" width="100px" />
+        return <img src={`${process.env.PUBLIC_URL}/fist.gif`} alt="fist" height="180px" width="180px" />
     }
 
     const showHeal = function () {
-        return <img src={`${process.env.PUBLIC_URL}/street-fighter-zangief.gif`} alt="fist" height="100px" width="100px" />
+        return <img src={`${process.env.PUBLIC_URL}/street-fighter-zangief.gif`} alt="fist" height="180px" width="180px" />
     }
 
     const showStun = function () {
-        return <img src={`${process.env.PUBLIC_URL}/balrog-diz.gif`} alt="fist" height="100px" width="100px" />
+        return <img src={`${process.env.PUBLIC_URL}/balrog-diz.gif`} alt="fist" height="180px" width="180px" />
     }
 
 
@@ -419,7 +420,10 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                         <li className="attack2">{playerDa.attackTwoName}<button onClick={handleAttack2Click}>ATTACK</button></li>
                         <li className="heal">{playerDa.healName}<button onClick={handleHealClick}>HEAL</button></li>
                     </ul>
+                        <button onClick={handleSpecialClick} className="special" ></button>
+                        <div className="playerCountUp">
                     {previousPlayerHealth > playerHealth ?
+
                         <CountUp
                             className="countUpRedP1"
                             start={previousPlayerHealth}
@@ -432,14 +436,16 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                             end={playerHealth}
                             duration="1"
                         />}
+                        </div>
                 </div>
+                <div className="gif">
                 {leftGif === true ? showGifLeft() : null}
                 {rightGif === true ? showGifRight() : null}
                 {healGif === true ? showHeal() : null}
                 {gif === true ? showFist() : null}
                 {stunGif === true ? showStun() : null}
-
-                <div>
+                </div>
+                <div> 
                     <img className="CPUImage" src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} alt="da-fighter" />
                     <ul className="DaDetails">
                         <li className="CPUName">{computerDa.name}</li>
@@ -448,6 +454,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                         <li className="CPUAttack2">{computerDa.attackTwoName}  <button>ATTACK</button></li>
                         <li className="CPUHeal">{computerDa.healName}  <button>HEAL</button></li>
                     </ul>
+                    <div className="computerCountUp">
 
                     {previousComputerHealth > computerHealth ?
                         <CountUp
@@ -462,8 +469,13 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                             end={computerHealth}
                             duration="1"
                         />}
+                        </div>
+                    </div>
                 </div>
+<<<<<<< HEAD
+=======
             </div>
+>>>>>>> d3c5b89fc64cfd3541e714a5b793ae0ecf519b94
         )
     } else {
         if (computerHealth <= 0) {

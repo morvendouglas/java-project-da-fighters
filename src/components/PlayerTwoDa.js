@@ -9,8 +9,7 @@ const PlayerTwoDa = ({ da, onPlayerTwoDaClicked }) => {
 
   return (
     <>
-      {/* <button onClick={handleClick}>{da.name}</button> */}
-      <img src={`${process.env.PUBLIC_URL}/${da.imgName}`} onClick={handleClick}  width="280" height="350"/>
+      <img src={`${process.env.PUBLIC_URL}/${da.imgName}`} className="flex-multiplayer-item" onClick={handleClick}  width="280" height="350"/>
     </>
   )
 }

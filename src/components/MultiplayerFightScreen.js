@@ -14,6 +14,10 @@ const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished }) => {
     const [playerSpecialUsed, setPlayerSpecialUsed] = useState(false);
     const [gameFinished, setGameFinished] = useState(false);
     const [gif, setGif] = useState(false)
+    const [leftGif, setLeftGif] = useState(false)
+    const [rightGif, setRightGif] = useState(false)
+    const [healGif, setHealGif] = useState(false)
+    const [stunGif, setStunGif] = useState(false)
 
     useEffect(() => {
         if (playerTwoHealth <= 0 & playerHealth > 0) {
@@ -175,63 +179,102 @@ const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished }) => {
         }
     }
 
+        const showGifLeft = function () {
+        const daImg2 = "left2.gif"
+        const daImg3 = "left3.gif"
+        const randomDaImg = [daImg2, daImg3]
+        const randomNumber = Math.floor(Math.random() * 2);
+        const img = randomDaImg[randomNumber]
+        return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="180px" width="180px" />
+    }
+
+    const showGifRight = function () {
+        const daImg1 = "right1.gif"
+        const daImg2 = "right2.gif"
+        const daImg3 = "right3.gif"
+        const randomDaImg = [daImg1, daImg2, daImg3]
+        const randomNumber = Math.floor(Math.random() * 3);
+        const img = randomDaImg[randomNumber]
+        return <img src={`${process.env.PUBLIC_URL}/${img}`} alt="fist" height="180px" width="180px" />
+    }
+
+
     const showFist = function () {
-        return <img src={`${process.env.PUBLIC_URL}/fist.gif`} height="200px" width="200px" />
+        return <img src={`${process.env.PUBLIC_URL}/fist.gif`} alt="fist" height="180px" width="180px" />
+    }
+
+    const showHeal = function () {
+        return <img src={`${process.env.PUBLIC_URL}/street-fighter-zangief.gif`} alt="fist" height="180px" width="180px" />
+    }
+
+    const showStun = function () {
+        return <img src={`${process.env.PUBLIC_URL}/balrog-diz.gif`} alt="fist" height="180px" width="180px" />
     }
 
 
     if (gameFinished === false) {
         return (
-            <>
+            <div className="fight_bg">
                 <div>
-                    <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} width="200" height="250" />
-                    <ul>
-                        <li className="health">{playerDa.name}</li>
-                        <li className="health">{playerDa.bio}</li>
-                        <li className="health">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
-                        <li className="health">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
-                        <li className="health">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
+                    <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} className="DaFightImg"  />
+                    <ul className = "DaDetails">
+                        <li className="name">{playerDa.name}</li>
+                        <li className="bio">{playerDa.bio}</li>
+                        <li className="attack1">{playerDa.attackOneName}...  <button onClick={handleAttack1Click}>ATTACK</button></li>
+                        <li className="attack2">{playerDa.attackTwoName}...  <button onClick={handleAttack2Click}>ATTACK</button></li>
+                        <li className="heal">{playerDa.healName}...  <button onClick={handleHealClick}>HEAL</button></li>
                     </ul>
+                    <button onClick={handleSpecialClick} className="special" ></button>
+                    <div className="playerCountUp">
                     {previousPlayerHealth > playerHealth ?
                         <CountUp
-                            className="countUpRed"
+                            className="countUpRedP1"
                             start={previousPlayerHealth}
                             end={playerHealth}
                             duration="1"
                         /> :
                         <CountUp
-                            className="countUpGreen"
+                            className="countUpGreenP1"
                             start={previousPlayerHealth}
                             end={playerHealth}
                             duration="1"
                         />}
+                    </div>
                 </div>
+                <div className="gif">
+                {leftGif === true ? showGifLeft() : null}
+                {rightGif === true ? showGifRight() : null}
+                {healGif === true ? showHeal() : null}
                 {gif === true ? showFist() : null}
+                {stunGif === true ? showStun() : null}
+                </div>
                 <div>
-                    <img src={`${process.env.PUBLIC_URL}/${playerTwoDa.imgName}`} width="220" height="250" />
+                    <img src={`${process.env.PUBLIC_URL}/${playerTwoDa.imgName}`} className="CPUImage" />
                     <ul>
-                        <li className="health">{playerTwoDa.name}</li>
-                        <li className="health">{playerTwoDa.bio}</li>
-                        <li className="health">{playerTwoDa.attackOneName}...  <button onClick={handlePlayerTwoAttack1Click}>ATTACK</button></li>
-                        <li className="health">{playerTwoDa.attackTwoName}...  <button onClick={handlePlayerTwoAttack2Click}>ATTACK</button></li>
-                        <li className="health">{playerTwoDa.healName}...  <button onClick={handlePlayerTwoHealClick}>HEAL</button></li>
+                        <li className="CPUName">{playerTwoDa.name}</li>
+                        <li className="CPUBio">{playerTwoDa.bio}</li>
+                        <li className="CPUAttack1">{playerTwoDa.attackOneName}...  <button onClick={handlePlayerTwoAttack1Click}>ATTACK</button></li>
+                        <li className="CPUAttack2">{playerTwoDa.attackTwoName}...  <button onClick={handlePlayerTwoAttack2Click}>ATTACK</button></li>
+                        <li className="CPUHeal">{playerTwoDa.healName}...  <button onClick={handlePlayerTwoHealClick}>HEAL</button></li>
                     </ul>
-
+                    <button onClick={handleSpecialClick} className="special" ></button>
+                    </div>
+                    <div>
                     {previousPlayerTwoHealth > playerTwoHealth ?
                         <CountUp
-                            className="countUpRed"
+                            className="countUpRedCPU"
                             start={previousPlayerTwoHealth}
                             end={playerTwoHealth}
                             duration="1"
                         /> :
                         <CountUp
-                            className="countUpGreen"
+                            className="countUpGreenCPU"
                             start={previousPlayerTwoHealth}
                             end={playerTwoHealth}
                             duration="1"
                         />}
+                    </div>
                 </div>
-            </>
         )
     } else {
         if (playerTwoHealth <= 0) {

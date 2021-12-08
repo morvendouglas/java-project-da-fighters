@@ -1,5 +1,5 @@
 import React from "react";
-import Da from "./Da";
+import PlayerOneDa from "./PlayerOneDa";
 import PlayerTwoDa from "./PlayerTwoDa"
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ const Simulation = ({ das, onDaClicked, onPlayerTwoDaClicked }) => {
     const playerOneDasNodes = das.map((da, index) => {
         return (
             <li key={index}>
-                <Da da={da} key={index} onDaClicked={onDaClicked} />
+                <PlayerOneDa da={da} key={index} onDaClicked={onDaClicked} />
             </li>
         )
     })
@@ -22,17 +22,22 @@ const Simulation = ({ das, onDaClicked, onPlayerTwoDaClicked }) => {
     })
 
     return (
-        <div>
-            <h1 className="health">This is the Multiplayer screen</h1>
-            <ul>
+        
+        <div >
+        <Link to="/"> <img className="home_button" src={`${process.env.PUBLIC_URL}/logo.png`}></img> </Link>
+            <div>
                 <h2 className="health">Computer Da One : </h2>
+                <ul className = "flex-container">
                 {playerOneDasNodes}
-            </ul>
-            <ul>
-                <h2 className="health">Computer Da Two : </h2>
+                </ul>
+            </div>
+            <div>
+            <h2 className="health">Computer Da Two : </h2>
+            <ul className = "flex-container">
                 {playerTwoDasNodes}
             </ul>
-            <Link to="/simulationfight"><button type="button">Fight</button></Link>
+            <Link to="/simulationfight"> <img className="fight_button" src={`${process.env.PUBLIC_URL}/SquareGo.png`}></img> </Link>
+            </div>
         </div>
     )
 
