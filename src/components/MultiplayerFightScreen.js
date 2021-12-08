@@ -19,6 +19,7 @@ const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished }) => {
     const [healGif, setHealGif] = useState(false)
     const [stunGif, setStunGif] = useState(false)
 
+
     useEffect(() => {
         if (playerTwoHealth <= 0 & playerHealth > 0) {
             onGameFinished(playerDa);
@@ -212,6 +213,7 @@ const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished }) => {
     }
 
 
+
     if (gameFinished === false) {
         return (
             <div className="fight_bg">
@@ -257,9 +259,9 @@ const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished }) => {
                         <li className="CPUAttack2">{playerTwoDa.attackTwoName}...  <button onClick={handlePlayerTwoAttack2Click}>ATTACK</button></li>
                         <li className="CPUHeal">{playerTwoDa.healName}...  <button onClick={handlePlayerTwoHealClick}>HEAL</button></li>
                     </ul>
-                    <button onClick={handleSpecialClick} className="special" ></button>
+                    {/* <button onClick={handleSpecialClick} className="special2" ></button> */}
                     </div>
-                    <div>
+                    <div className="playerCountUp">
                     {previousPlayerTwoHealth > playerTwoHealth ?
                         <CountUp
                             className="countUpRedCPU"

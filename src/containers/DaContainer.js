@@ -54,7 +54,7 @@ useEffect(() => {
 const handlePost = function (da) {
   const request = new Request();
   request.post("/create-a-da", da)
-    .then(() => window.location = '/select')
+    .then(() => window.location = '/mode')
 }
 
 const findDaById = function (id) {
