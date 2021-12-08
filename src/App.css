@@ -203,7 +203,7 @@ button{
 }
 
 .countUpGreenP1 {
-  background-color: black;
+  background-color: none;
   padding: 5px;
   color: green;
   font-size:60pt;
@@ -212,7 +212,7 @@ button{
   font-family: 'Russo One', sans-serif;
 }
 .countUpRedP1 {
-  background-color: black;
+  background-color: none;
   padding: 5px;
   color: red;
   font-size: 60pt;
@@ -310,11 +310,11 @@ text-align: center;
 .countUpRedCPU {
   color: red;
   font-size:60pt;
-  background-color: black;
+  background-color: none;
     margin-top: -12vh;
     margin-right: 250px;
     float: right;
-    border: 2px solid black;
+    border: 2px solid none;
     font-family: 'Russo One', sans-serif;
     padding: 5px;
 } 
@@ -322,11 +322,11 @@ text-align: center;
 .countUpGreenCPU {
   color: green;
   font-size:60pt;
-  background-color: black;
+  background-color: none;
     margin-top: -12vh;
     margin-right: 250px;
     float: right;
-    border: 2px solid black;
+    border: 2px solid none;
     font-family: 'Russo One', sans-serif;
     padding: 5px;
 }
@@ -343,6 +343,6 @@ text-align: center;
 
 .countUpGreenCPU{
   color: green;
-  background-color: black;
+  background-color: none;
 }
 
