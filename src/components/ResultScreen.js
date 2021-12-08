@@ -56,7 +56,7 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
             {winner.name === playerDa.name ?
                 <div>
                     <h2> You battered them !</h2>
-                    <h2> {findWinMessage()}</h2>
+                    <h2> Some say {computerDa.name} {findWinMessage()}</h2>
                     {das.length < 2 ?
                         <button type="button" onClick={handleOnNextDaClick}>Mon then ...</button>
                         :
@@ -68,7 +68,7 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
                 :
                 <div>
                     <h2> You got smashed ...</h2>
-                    <h2> {findLoseMessage()}</h2>
+                    <h2> He's saying {findLoseMessage()}</h2>
                     <Link to="/select"><button type="button" onClick={handleOnClick}>Play again ...</button></Link>
                 </div>
             }
