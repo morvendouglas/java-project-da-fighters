@@ -72,6 +72,8 @@ const ResultScreen = ({ winner, playerDa, onGameFinished, das, computerDa, onCho
                     <h2 className="results" > You got smashed ...</h2>
                     <h2 className="results"> {findLoseMessage()}</h2>
                     <Link to="/select"><button className="resultsbutton" type="button" onClick={handleOnClick}>Play again ...</button></Link>
+                    <img className="resultsgif" height="600" src={`${process.env.PUBLIC_URL}/resultsgif.gif`} />
+
                 </div>
             }
         </div>
