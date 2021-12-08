@@ -393,7 +393,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     }
 
     const showHeal = function () {
-        return <img src={`${process.env.PUBLIC_URL}/street-fighter-zangief.gif`} alt="fist" height="180px" width="180px" />
+        return <img src={`${process.env.PUBLIC_URL}/nectar.gif`} alt="fist" height="180px" width="180px" />
     }
 
     const showStun = function () {
