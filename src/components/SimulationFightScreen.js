@@ -295,58 +295,73 @@ const SimulationFightScreen = ({ computerDaOne, computerDaTwo, onGameFinished, c
 
     if (gameFinished === false) {
         return (
+<<<<<<< HEAD
             <>
                 <div onLoad={updateMultiplayer}>
                     <img src={`${process.env.PUBLIC_URL}/${computerDaOne.imgName}`} width="200" height="250" />
+=======
+
+                <div className="fight_bg">
+                    <div>
+                    <img src={`${process.env.PUBLIC_URL}/${computerDaOne.imgName}`} className="DaFightImg" />
+>>>>>>> feature/final
                     <ul>
-                        <li className="health">{computerDaOne.name}</li>
-                        <li className="health">{computerDaOne.bio}</li>
-                        <li className="health">{computerDaOne.attackOneName}...</li>
-                        <li className="health">{computerDaOne.attackTwoName}...</li>
-                        <li className="health">{computerDaOne.healName}...</li>
+                        <li className="name">{computerDaOne.name}</li>
+                        <li className="bio">{computerDaOne.bio}</li>
+                        <li className="attack1">{computerDaOne.attackOneName}...</li>
+                        <li className="attack2">{computerDaOne.attackTwoName}...</li>
+                        <li className="heal">{computerDaOne.healName}...</li>
                     </ul>
+                    <div className="playerCountUp">
                     {previousComputerDaOneHealth > computerDaOneHealth ?
                         <CountUp
-                            className="countUpRed"
+                           className="countUpRedP1"
                             start={previousComputerDaOneHealth}
                             end={computerDaOneHealth}
                             duration="1"
                         /> :
                         <CountUp
-                            className="countUpGreen"
+                            className="countUpGreenP1"
                             start={previousComputerDaOneHealth}
                             end={computerDaOneHealth}
                             duration="1"
                         />}
+                          </div>
                 </div>
+                <div className="gif">
+                <button onClick={computerDaOneTurn}>FIGHT</button>
                 {gif === true ? showFist() : null}
+                </div>
                 <div>
-                    <img src={`${process.env.PUBLIC_URL}/${computerDaTwo.imgName}`} width="220" height="250" />
+                <div>
+                    <img src={`${process.env.PUBLIC_URL}/${computerDaTwo.imgName}`} className="CPUImage" />
                     <ul>
-                        <li className="health">{computerDaTwo.name}</li>
-                        <li className="health">{computerDaTwo.bio}</li>
-                        <li className="health">{computerDaTwo.attackOneName}...</li>
-                        <li className="health">{computerDaTwo.attackTwoName}...</li>
-                        <li className="health">{computerDaTwo.healName}...</li>
+                        <li className="CPUName">{computerDaTwo.name}</li>
+                        <li className="CPUBio">{computerDaTwo.bio}</li>
+                        <li className="CPUAttack1">{computerDaTwo.attackOneName}...</li>
+                        <li className="CPUAttack2">{computerDaTwo.attackTwoName}...</li>
+                        <li className="CPUHeal">{computerDaTwo.healName}...</li>
                     </ul>
+                    <div className="playerCountUp">
                     {previousComputerDaTwoHealth > computerDaTwoHealth ?
                         <CountUp
-                            className="countUpRed"
+                            className="countUpRedCPU"
                             start={previousComputerDaTwoHealth}
                             end={computerDaTwoHealth}
                             duration="1"
                         /> :
                         <CountUp
-                            className="countUpGreen"
+                            className="countUpGreenCPU"
                             start={previousComputerDaTwoHealth}
                             end={computerDaTwoHealth}
                             duration="1"
                         />}
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <button onClick={computerDaOneTurn}>FIGHT</button>
                 </div>
-            </>
+            
+    
         )
     } else {
         if (computerDaTwoHealth <= 0) {

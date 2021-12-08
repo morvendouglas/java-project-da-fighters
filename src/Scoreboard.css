@@ -1,8 +1,9 @@
 .scoreboard {
-    font-size: large;
+    font-size: x-large;
     color: white;
-    padding: 15px;
+    padding: 20px;
     margin: auto;
+    font-family: 'Russo One', sans-serif;
 }
 
 .header {
@@ -12,7 +13,7 @@
 
 .countUpGreen {
     color: green;
-    font-size: 26px;
+    font-size: 32px;
 }
 
 .daName {
@@ -26,12 +27,13 @@
 }
 
 .buttonScoreboard {
+    font-family: 'Russo One', sans-serif;
     font-size: large;
     width: auto;
 }
 
 .home {
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .home{
     display: flex;
@@ -39,6 +41,6 @@
     margin-right: auto;
     height: 100px;
     width: 200px;
-    margin-top: 16vh;
+    margin-top: 1vh;
 }
 
