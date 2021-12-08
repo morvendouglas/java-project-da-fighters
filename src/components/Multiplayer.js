@@ -1,5 +1,6 @@
 import React from "react";
 import Da from "./Da";
+import PlayerOneDa from './PlayerOneDa'
 import PlayerTwoDa from "./PlayerTwoDa"
 import { Link } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ const Multiplayer = ({ das, onDaClicked, onPlayerTwoDaClicked }) => {
     const playerOneDasNodes = das.map((da, index) => {
         return (
             <li key={index}>
-                <Da da={da} key={index} onDaClicked={onDaClicked} />
+                <PlayerOneDa da={da} key={index} onDaClicked={onDaClicked} />
             </li>
         )
     })
@@ -23,16 +24,20 @@ const Multiplayer = ({ das, onDaClicked, onPlayerTwoDaClicked }) => {
 
     return (
         <div>
-            <h1 className="health">This is the Multiplayer screen</h1>
-            <ul>
+            <Link to="/"> <img className="home_button" src={`${process.env.PUBLIC_URL}/logo.png`}></img> </Link>
+            <div>
                 <h2 className="health">Player One : </h2>
-                {playerOneDasNodes}
-            </ul>
-            <ul>
+                <ul className = "flex-container">
+			        {playerOneDasNodes}
+		        </ul>
+            </div>
+            <div>
                 <h2 className="health">Player Two : </h2>
-                {playerTwoDasNodes}
-            </ul>
-            <Link to="/multiplayerfight"><button type="button">Fight</button></Link>
+                <ul className = "flex-container">
+			        {playerTwoDasNodes}
+		        </ul>
+            </div>
+            <Link to="/multiplayerfight"> <img className="fight_button" src={`${process.env.PUBLIC_URL}/SquareGo.png`}></img> </Link>
         </div>
     )
 

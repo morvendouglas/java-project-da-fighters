@@ -1,25 +1,35 @@
-.main_logo{
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;  }
 
-.press_start{
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;  }
-
-body {
-    background-color: black;
+.health {
+  color: white;
+  font-family: 'Rubik', sans-serif;
 }
 
-.audio_player{
+.main_logo {
     display: flex;
     margin-left: auto;
     margin-right: auto;  
 }
 
-.health {
-    color: white;
+.press_start {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+body {
+    background-color: black;
+}
+
+/* ------- */
+
+
+/* ---- */
+
+
+.audio_player {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;  
 }
 
 .flex-container {
@@ -28,11 +38,11 @@ body {
     justify-content: center;
   }
 
-  .flex-item  {
+  .flex-item {
     width: 200px;
     height: 200px;
     padding:  1px 1px 1px 1px ;
-      }
+  }
     
   .flex-item:hover {
     cursor: pointer;
@@ -42,38 +52,18 @@ body {
     box-sizing: border-box;
   }
 
-.countUpRedP1 {
-  color: red;
-  font-size:50pt;
-  margin-bottom: -100px;
-  margin-left: 250px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.countDownRedCPU {
-  color: red;
-  font-size:50pt;
-  margin-top: 40px;
-  margin-right: 250px;
-  float: right;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.countUpGreenP1 {
-  color: green;
-  font-size:50pt;
-  margin-left: 240px;
-  margin-bottom:-200px;
-  font-family: Arial, Helvetica, sans-serif;
-
+  .flex-multiplayer-item {
+    width: 135px;
+    height: 135px;
+    padding:  1px 1px 1px 1px ;
   }
 
-  .countUpGreenCPU {
-    color: green;
-    font-size:50pt;
-    margin-top: 50px;
-    margin-right: 250px;
-    float: right;
-    font-family: Arial, Helvetica, sans-serif;
+  .flex-multiplayer-item:hover {
+    cursor: pointer;
+    outline-style: solid;
+    outline-color: #ffdf59;
+    outline-width: 2px;
+    box-sizing: border-box;
   }
 
 
@@ -122,83 +112,237 @@ button{
   background-attachment: fixed;
   overflow: hidden;
 }
+
+
+/* player card */
 .DaFightImg{
-  /* position: fixed; */
-  margin-left: 180px;
-  margin-top: 90px;
+  margin-left: 200px;
+  margin-top: 110px;
   height: 200px;
   width: 200px;
 }
-
-.DaDetails {
-  list-style:none;
-  font-family: Arial, Helvetica, sans-serif;
-} 
 .name{
-  color: white;
-  font-size: x-large;
-  margin-top: 20px;
-  margin-left: 110px;
+  color: black;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 40px;
+  margin-left: 20px;
+  max-width: 500px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
 }
 .bio{
-  margin-top: 20px;
+  font-size: large;
+  margin-top: 5px;
+  margin-bottom: 10px;
   color: black;
-  max-width: 320px;
-  margin-left: 90px;
+  max-width: 300px;
+  max-height: 80px;
+  margin-left: 100px;
   text-align: center;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid black;
 }
 .attack1{
-  margin-left: 90px;
+  font-size: large;
+  margin-top: 5px;
+  margin-left: 100px;
   color: black;
+  max-width: 400px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
 }
+/* .attack1 > button {
+  margin-left: 10px;
+} */
 .attack2{
-  margin-left: 90px;
+  font-size: large;
+  margin-top: 5px;
+  margin-left: 100px;
   color: black;
+  max-width: 600px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
 }
+/* .attack2 > button {
+  margin-left: 10px;
+} */
+
 .heal{
-  margin-left: 90px;
+  font-size: large;
+  margin-top: 5px;
+  margin-left: 100px;
   color: black;
+  max-width: 600px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+}
+/* .heal > button {
+  margin-left: 10px;
+} */
+
+.special {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  margin-top: 15px;
+  margin-bottom: 3vh;
+  margin-left: 17vw;
+  padding: 35px;
+  height: 70px;
+  width: 100px;
 }
 
+.countUpGreenP1 {
+  background-color: black;
+  padding: 5px;
+  color: green;
+  font-size:60pt;
+  margin-left: 17vw;
+  margin-bottom: -20vh;
+  font-family: 'Russo One', sans-serif;
+}
+.countUpRedP1 {
+  background-color: black;
+  padding: 5px;
+  color: red;
+  font-size: 60pt;
+  margin-left: 17vw;
+  margin-bottom: -20vh;
+  font-family: 'Russo One', sans-serif;
+}
+
+
+/* computer card */
 .CPUImage{
-  /* position: fixed; */
-margin-left: 1020px;
 height: 200px;
-  width: 200px;
-  }
+width: 200px;
+border: 2px solid black;
+float: right;
+margin-top: -85vh;
+margin-right: 15vw;
+text-align: center;
+}
 
 .CPUName{
   float: right;
-  color: white;
-  font-size: x-large;
-  margin-top: -360px;
-  margin-right: 200px;
+  margin-top: -55vh;
+  margin-right: 140px;
+  color: black;
   text-align: center;
-
+  font-size: 30px;
+  max-width: 500px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
 }
+
 .CPUBio{
   float: right;
   color: black;
-  max-width: 320px;
-  margin-top: -300px;
-  margin-right: 140px;
+  margin-top: -50vh;
+  margin-right: 175px;
   text-align: center;
+  max-width: 300px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+  font-size: large;
+  padding-bottom: 2px;
+  border-bottom: 1px solid black;
 }
+
 .CPUAttack1{
   float: right;
   color: black;
-  margin-top: -220px;
+  margin-top: -43vh;
   margin-right: 140px;
+  font-size: large;
+  max-width: 400px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
 }
+/* .CPUAttack1 > button {
+  margin-left: 15px;
+} */
+
 .CPUAttack2{
   float: right;
   color: black;
-  margin-top: -170px;
+  margin-top: -38vh;
   margin-right: 140px;
+  font-size: large;
+  max-width: 400px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
 } 
+/* .CPUAttack2 > button {
+  margin-left: 15px;
+} */
+
 .CPUHeal{
   float: right;
   color: black;
-  margin-top: -120px;
+  margin-top: -32vh;
   margin-right: 140px;
+  font-size: large;
+  max-width: 400px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+} 
+/* .CPUHeal > button {
+  margin-right: 15px;
+} */
+
+
+.countUpRedCPU {
+  color: red;
+  font-size:60pt;
+  background-color: black;
+    margin-top: -12vh;
+    margin-right: 250px;
+    float: right;
+    border: 2px solid black;
+    font-family: 'Russo One', sans-serif;
+    padding: 5px;
+} 
+
+.countUpGreenCPU {
+  color: green;
+  font-size:60pt;
+  background-color: black;
+    margin-top: -12vh;
+    margin-right: 250px;
+    float: right;
+    border: 2px solid black;
+    font-family: 'Russo One', sans-serif;
+    padding: 5px;
 }
+
+
+.gif {
+  margin-left: 600px;
+  margin-bottom: 250px;
+  margin-top: -450px;
+  color: black;
+  width: 200px;
+  height: 200px;
+}
+
+.countUpGreenCPU{
+  color: green;
+  background-color: black;
+}
+
