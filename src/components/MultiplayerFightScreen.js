@@ -259,7 +259,7 @@ const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished }) => {
                     </ul>
                     <button onClick={handleSpecialClick} className="special" ></button>
                     </div>
-                    <div>
+                    <div className="playerCountUp">
                     {previousPlayerTwoHealth > playerTwoHealth ?
                         <CountUp
                             className="countUpRedCPU"

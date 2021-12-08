@@ -18,6 +18,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
     const [rightGif, setRightGif] = useState(false)
     const [healGif, setHealGif] = useState(false)
     const [stunGif, setStunGif] = useState(false)
+    const [missedGif, setMissedGif] = useState(false)
 
     useEffect(() => {
         if (computerHealth <= 0 & playerHealth > 0) {
@@ -355,6 +356,10 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         return <img src={`${process.env.PUBLIC_URL}/balrog-diz.gif`} alt="fist" height="180px" width="180px" />
     }
 
+      const showCross = function () {
+        return <img src={`${process.env.PUBLIC_URL}/gighy.gif`} alt="cross" height="180px" width="180px" />
+    }
+
 
 
     if (gameFinished === false) {
@@ -399,6 +404,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 {healGif === true ? showHeal() : null}
                 {gif === true ? showFist() : null}
                 {stunGif === true ? showStun() : null}
+                {missedGif === true ? showCross() : null}
                 </div>
                 <div> 
                     <img className="CPUImage" src={`${process.env.PUBLIC_URL}/${computerDa.imgName}`} alt="da-fighter" />
