@@ -472,10 +472,6 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
-            </div>
->>>>>>> d3c5b89fc64cfd3541e714a5b793ae0ecf519b94
         )
     } else {
         if (computerHealth <= 0) {
