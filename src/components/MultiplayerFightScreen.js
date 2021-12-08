@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../App.css'
 import { getFID } from 'web-vitals';
 
-const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished }) => {
+const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished, changeMultiplayer }) => {
 
     const [playerTwoHealth, setPlayerTwoHealth] = useState(20);
     const [previousPlayerTwoHealth, setPreviousPlayerTwoHealth] = useState(0);
@@ -29,6 +29,10 @@ const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished }) => {
 
     const getRandomNumber = function (min, max) {
         return Math.floor(Math.random() * ((max - min) + 1) + min);
+    }
+
+    const updateMultiplayer = function () {
+        changeMultiplayer(true);
     }
 
     const handleAttack1Click = function () {
@@ -214,7 +218,7 @@ const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished }) => {
 
     if (gameFinished === false) {
         return (
-            <div className="fight_bg">
+            <div className="fight_bg" onLoad={updateMultiplayer}>
                 <div>
                     <img src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} className="DaFightImg"  />
                     <ul className = "DaDetails">

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../App.css'
 import { getFID } from 'web-vitals';
 
-const SimulationFightScreen = ({ computerDaOne, computerDaTwo, onGameFinished }) => {
+const SimulationFightScreen = ({ computerDaOne, computerDaTwo, onGameFinished, changeMultiplayer }) => {
 
     const [computerDaTwoHealth, setComputerDaTwoHealth] = useState(100);
     const [previousComputerDaTwoHealth, setPreviousComputerDaTwoHealth] = useState(0);
@@ -25,6 +25,10 @@ const SimulationFightScreen = ({ computerDaOne, computerDaTwo, onGameFinished })
 
     const getRandomNumber = function (min, max) {
         return Math.floor(Math.random() * ((max - min) + 1) + min);
+    }
+
+    const updateMultiplayer = function () {
+        changeMultiplayer(true);
     }
 
     const computerDaOneTurn = function () {
@@ -292,7 +296,7 @@ const SimulationFightScreen = ({ computerDaOne, computerDaTwo, onGameFinished })
     if (gameFinished === false) {
         return (
             <>
-                <div>
+                <div onLoad={updateMultiplayer}>
                     <img src={`${process.env.PUBLIC_URL}/${computerDaOne.imgName}`} width="200" height="250" />
                     <ul>
                         <li className="health">{computerDaOne.name}</li>
