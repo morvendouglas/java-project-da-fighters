@@ -27,20 +27,42 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         }
     }, [computerHealth, playerHealth])
 
+    const playAudio = function () {
+        let music = new Audio ("/game_music.wav")
+        music.play()
+    }
+
     const playSound = function () {
-        let audio1 = new Audio ("/sound1.wav")
-        let audio2 = new Audio ("/sound2.wav")
-        let audio3 = new Audio ("/sound3.wav")
-        let audio4 = new Audio ("/sound4.wav")
-        const randomAudio = [audio1, audio2, audio3, audio4]
-        const randomNumber = Math.floor(Math.random() * 4);
+        let audio1 = new Audio("/sound1.wav")
+        let audio2 = new Audio("/sound2.wav")
+        const randomAudio = [audio1, audio2]
+        const randomNumber = Math.floor(Math.random() * 2);
+        const chosenSound = randomAudio[randomNumber]
+        chosenSound.play()
+    };
+
+    const playComputerSound = function () {
+        let audio3 = new Audio("/sound3.wav")
+        let audio4 = new Audio("/sound4.wav")
+        const randomAudio = [audio3, audio4]
+        const randomNumber = Math.floor(Math.random() * 2);
         const chosenSound = randomAudio[randomNumber]
         chosenSound.play()
     };
 
     const playHeal = function () {
-        let healAudio = new Audio ("/nectar.wav")
+        let healAudio = new Audio("/nectar.wav")
         healAudio.play()
+    }
+
+    const playSpecial = function () {
+        let specialSound = new Audio("/dadouken.wav")
+        specialSound.play()
+    }
+
+    const playSpecialFail = function () {
+        let specialFailSound = new Audio("/fail.wav")
+        specialFailSound.play()
     }
 
     const getRandomNumber = function (min, max) {
@@ -75,6 +97,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
         setPreviousComputerHealth(computerHealth)
         setComputerHealth(computerHealth => computerHealth - damage)
         console.log("player hit computer for : " + damage);
+        playSound()
         // checkIfGameFinished();
         setGif(true)
         setTimeout(function () {
@@ -131,6 +154,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setTimeout(function () {
                     setLeftGif(false)
                 }, 2500)
+                playSpecial();
                 setTimeout(function () {
                     computerTurn()
                 }, 2000)
@@ -140,6 +164,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setPlayerSpecialUsed(true);
                 playerDa.specialName = "Special Used"
                 console.log("player hit themselves for : " + selfDamage);
+                playSpecialFail();
                 setStunGif(true)
                 setTimeout(function () {
                     setStunGif(false)
@@ -171,6 +196,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             setTimeout(function () {
                 setGif(false)
             }, 1500)
+            playComputerSound()
         }
         const Attack2 = function () {
             let damage = getRandomNumber(10, 35);
@@ -182,6 +208,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             setTimeout(function () {
                 setGif(false)
             }, 1500)
+            playComputerSound()
         }
         const Heal = function () {
             let heal = 0;
@@ -206,6 +233,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
             setTimeout(function () {
                 setHealGif(false)
             }, 1500)
+            playHeal();
         }
         const Special = function () {
             let opponentDamage = 45;
@@ -218,6 +246,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setComputerSpecialUsed(true);
                 computerDa.specialName = "Special Used"
                 console.log("computer hit player for : " + opponentDamage);
+                playSpecial();
                 setRightGif(true)
                 setTimeout(function () {
                     setRightGif(false)
@@ -228,6 +257,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                 setComputerSpecialUsed(true);
                 computerDa.specialName = "Special Used"
                 console.log("computer hit themselves for : " + selfDamage);
+                playSpecialFail();
                 setStunGif(true)
                 setTimeout(function () {
                     setStunGif(false)
@@ -329,7 +359,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
 
     if (gameFinished === false) {
         return (
-            <div className="fight_bg">
+            <div className="fight_bg" onLoad={playAudio} >
                 {das.length < 2 ?
                     <div>
                         <h1 className="health">FINAL ROUND</h1>
@@ -338,7 +368,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                     <div></div>}
                 <div>
                     <img className="DaFightImg" src={`${process.env.PUBLIC_URL}/${playerDa.imgName}`} width="200" height="200" />
-                    <ul className = "DaDetails">
+                    <ul className="DaDetails">
                         <li className="name">{playerDa.name}</li>
                         <li className="bio">{playerDa.bio}</li>
                         <li className="attack1">{playerDa.attackOneName}<button onClick={handleAttack1Click}>ATTACK</button></li>
@@ -397,6 +427,10 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+            </div>
+>>>>>>> d3c5b89fc64cfd3541e714a5b793ae0ecf519b94
         )
     } else {
         if (computerHealth <= 0) {
@@ -415,7 +449,7 @@ const FightScreen = ({ playerDa, computerDa, onGameFinished, das }) => {
                         <h1>{computerDa.name} wrecked {playerDa.name}</h1>
                         <h2>You Lose !</h2>
                     </div>
-                    </>
+                </>
             )
         }
     }
