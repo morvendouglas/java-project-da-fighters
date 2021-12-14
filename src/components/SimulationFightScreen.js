@@ -295,16 +295,10 @@ const SimulationFightScreen = ({ computerDaOne, computerDaTwo, onGameFinished, c
 
     if (gameFinished === false) {
         return (
-<<<<<<< HEAD
-            <>
-                <div onLoad={updateMultiplayer}>
-                    <img src={`${process.env.PUBLIC_URL}/${computerDaOne.imgName}`} width="200" height="250" />
-=======
+                <div onLoad={updateMultiplayer} className="fight_bg">
 
-                <div className="fight_bg">
-                    <div>
+                <div>
                     <img src={`${process.env.PUBLIC_URL}/${computerDaOne.imgName}`} className="DaFightImg" />
->>>>>>> feature/final
                     <ul>
                         <li className="name">{computerDaOne.name}</li>
                         <li className="bio">{computerDaOne.bio}</li>
@@ -312,29 +306,30 @@ const SimulationFightScreen = ({ computerDaOne, computerDaTwo, onGameFinished, c
                         <li className="attack2">{computerDaOne.attackTwoName}...</li>
                         <li className="heal">{computerDaOne.healName}...</li>
                     </ul>
-                    <div className="playerCountUp">
+                </div>
+                    <div className="CPlayerCountUp">
                     {previousComputerDaOneHealth > computerDaOneHealth ?
                         <CountUp
-                           className="countUpRedP1"
+                           className="CCountUpGreen"
                             start={previousComputerDaOneHealth}
                             end={computerDaOneHealth}
                             duration="1"
                         /> :
                         <CountUp
-                            className="countUpGreenP1"
+                            className="CCountUpRed"
                             start={previousComputerDaOneHealth}
                             end={computerDaOneHealth}
                             duration="1"
                         />}
-                          </div>
-                </div>
-                <div className="gif">
-                <button onClick={computerDaOneTurn}>FIGHT</button>
+                     </div>
+                <div className="CGif">
+                <button onClick={computerDaOneTurn} className="CButton">FIGHT</button>
                 {gif === true ? showFist() : null}
                 </div>
+
+                
                 <div>
-                <div>
-                    <img src={`${process.env.PUBLIC_URL}/${computerDaTwo.imgName}`} className="CPUImage" />
+                    <img src={`${process.env.PUBLIC_URL}/${computerDaTwo.imgName}`} className="CImage" />
                     <ul>
                         <li className="CPUName">{computerDaTwo.name}</li>
                         <li className="CPUBio">{computerDaTwo.bio}</li>
@@ -359,9 +354,7 @@ const SimulationFightScreen = ({ computerDaOne, computerDaTwo, onGameFinished, c
                         </div>
                     </div>
                 </div>
-                </div>
-            
-    
+
         )
     } else {
         if (computerDaTwoHealth <= 0) {

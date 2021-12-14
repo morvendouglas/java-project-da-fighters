@@ -140,11 +140,11 @@ button{
   max-width: 300px;
   max-height: 80px;
   margin-left: 100px;
-  text-align: center;
+  /* text-align: center; */
   font-family: 'Russo One', sans-serif;
   list-style: none;
   padding-bottom: 2px;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
 }
 .attack1{
   font-size: large;
@@ -224,11 +224,10 @@ button{
 
 /* computer card */
 .CPUImage{
+float: right;
 height: 200px;
 width: 200px;
-border: 2px solid black;
-float: right;
-margin-top: -85vh;
+margin-top: -86.5vh;
 margin-right: 15vw;
 text-align: center;
 }
@@ -236,7 +235,7 @@ text-align: center;
 .CPUName{
   float: right;
   margin-top: -55vh;
-  margin-right: 140px;
+  margin-right: 145px;
   color: black;
   text-align: center;
   font-size: 30px;
@@ -250,22 +249,23 @@ text-align: center;
   float: right;
   color: black;
   margin-top: -50vh;
-  margin-right: 175px;
-  text-align: center;
-  max-width: 300px;
+  margin-right: 145px;
+  text-align: right;
+  max-width: 350px;
   max-height: 80px;
   font-family: 'Russo One', sans-serif;
   list-style: none;
   font-size: large;
   padding-bottom: 2px;
-  border-bottom: 1px solid black;
+  padding-top: 2px;
+  /* border-bottom: 1px solid black; */
 }
 
 .CPUAttack1{
   float: right;
   color: black;
   margin-top: -43vh;
-  margin-right: 140px;
+  margin-right: 145px;
   font-size: large;
   max-width: 400px;
   max-height: 80px;
@@ -280,7 +280,7 @@ text-align: center;
   float: right;
   color: black;
   margin-top: -38vh;
-  margin-right: 140px;
+  margin-right: 145px;
   font-size: large;
   max-width: 400px;
   max-height: 80px;
@@ -294,8 +294,8 @@ text-align: center;
 .CPUHeal{
   float: right;
   color: black;
-  margin-top: -32vh;
-  margin-right: 140px;
+  margin-top: -33vh;
+  margin-right: 145px;
   font-size: large;
   max-width: 400px;
   max-height: 80px;
@@ -370,10 +370,87 @@ text-align: center;
   height: 200px;
   width: 100px;
 }
-
+/* 
 .special2 {
   border: solid red 4px;
   margin-top: -900px;
   margin-bottom: -5vh;
+} */
+
+.CImage {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  float: right;
+  margin-top: -86vh;
+  margin-right: 15vw;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
 }
 
+/* .CAttackOne {
+  height: 20px;
+  width: 250px;
+  float: right;
+  margin-top: -25vh;
+  margin-right: 15vw;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+
+}
+
+.CHeal {
+  height: 20px;
+  width: 250px;
+  float: right;
+  margin-top: -25vh;
+  margin-right: 15vw;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+
+} */
+
+.CGif {
+  margin-left: 600px;
+  margin-bottom: 260px;
+  margin-top: -180px;
+  color: black;
+  width: 200px;
+  height: 100px;
+
+}
+
+.CButton {
+    font-family: 'Russo One', sans-serif;
+    font-size: xx-large;
+    padding: 15px;
+    width: auto;
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+
+.CCountUpGreen {
+  padding: 5px;
+  color: green;
+  font-size:60pt;
+  margin-top: 100px;
+  /* margin-left: 200px; */
+  /* margin-top: 200px; */
+  /* margin-bottom: -40vh; */
+  font-family: 'Russo One', sans-serif;
+}
+.CCountUpRed {
+  padding: 5px;
+  color: red;
+  font-size: 60pt;
+  /* margin-left: 17vw; */
+  /* margin-bottom: -20vh; */
+  font-family: 'Russo One', sans-serif;
+}
+
+.CPlayerCountUp {
+  /* margin-left: 200vw;
+  border: red 5px solid; */
+
+}

@@ -6,7 +6,7 @@ import { getFID } from 'web-vitals';
 
 const MultiplayerFightScreen = ({ playerDa, playerTwoDa, onGameFinished, changeMultiplayer }) => {
 
-    const [playerTwoHealth, setPlayerTwoHealth] = useState(20);
+    const [playerTwoHealth, setPlayerTwoHealth] = useState(100);
     const [previousPlayerTwoHealth, setPreviousPlayerTwoHealth] = useState(0);
     const [playerHealth, setPlayerHealth] = useState(100);
     const [previousPlayerHealth, setPreviousPlayerHealth] = useState(0);

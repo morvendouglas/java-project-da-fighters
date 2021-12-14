@@ -53,19 +53,19 @@ const DaContainer = () => {
   //     music.play();
   // }
 
-<<<<<<< HEAD
-  const handlePost = function (da) {
-    const request = new Request();
-    request.post("/create-a-da", da)
-      .then(() => window.location = '/select')
-  }
-=======
+
+  // const handlePost = function (da) {
+  //   const request = new Request();
+  //   request.post("/create-a-da", da)
+  //     .then(() => window.location = '/select')
+  // }
+
 const handlePost = function (da) {
   const request = new Request();
   request.post("/create-a-da", da)
     .then(() => window.location = '/mode')
 }
->>>>>>> feature/final
+
 
   const findDaById = function (id) {
     return das.find((da) => {
