@@ -1,0 +1,43 @@
+.scoreboard {
+    font-size: x-large;
+    color: white;
+    padding: 20px;
+    margin: auto;
+    font-family: 'Russo One', sans-serif;
+}
+
+.header {
+ color: black;
+ padding-bottom: 4vh;
+}
+
+.countUpGreen {
+    color: green;
+    font-size: 32px;
+}
+
+.daName {
+    padding-right: 5vw;
+    margin: 1vw;
+}
+
+.daPoints {
+    padding-right: 5vw;
+    margin: 0.4vw;
+}
+
+.buttonScoreboard {
+    font-family: 'Russo One', sans-serif;
+    font-size: large;
+    width: auto;
+}
+
+.home{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 200px;
+    margin-top: 1vh;
+}
+

@@ -1,0 +1,456 @@
+
+.health {
+  color: white;
+  font-family: 'Rubik', sans-serif;
+}
+
+.main_logo {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+.press_start {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+body {
+    background-color: black;
+}
+
+/* ------- */
+
+
+/* ---- */
+
+
+.audio_player {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .flex-item {
+    width: 200px;
+    height: 200px;
+    padding:  1px 1px 1px 1px ;
+  }
+    
+  .flex-item:hover {
+    cursor: pointer;
+    outline-style: solid;
+    outline-color: #ffdf59;
+    outline-width: 2px;
+    box-sizing: border-box;
+  }
+
+  .flex-multiplayer-item {
+    width: 110px;
+    height: 110px;
+    padding:  1px 1px 1px 1px ;
+  }
+
+  .flex-multiplayer-item:hover {
+    cursor: pointer;
+    outline-style: solid;
+    outline-color: #ffdf59;
+    outline-width: 2px;
+    box-sizing: border-box;
+  }
+
+
+button{
+    background-color: #e05f14;
+    border: none;    
+    color: black;
+    padding: 8px 22px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.2s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+  }
+
+  button:hover {opacity: 1}
+
+  .fight_button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -85px;
+    height: 300px;
+    width: 600px;
+}
+
+  .home_button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 200px;
+}
+
+.fight_bg{
+  margin:0 auto;
+  background: url(/src/fight.gif) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+
+/* player card */
+.DaFightImg{
+  margin-left: 200px;
+  margin-top: 110px;
+  height: 200px;
+  width: 200px;
+}
+.name{
+  color: black;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 40px;
+  margin-left: 20px;
+  max-width: 500px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+}
+.bio{
+  font-size: large;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: black;
+  max-width: 300px;
+  max-height: 80px;
+  margin-left: 100px;
+  /* text-align: center; */
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+  padding-bottom: 2px;
+  /* border-bottom: 1px solid black; */
+}
+.attack1{
+  font-size: large;
+  margin-top: 5px;
+  margin-left: 100px;
+  color: black;
+  max-width: 400px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+}
+/* .attack1 > button {
+  margin-left: 10px;
+} */
+.attack2{
+  font-size: large;
+  margin-top: 5px;
+  margin-left: 100px;
+  color: black;
+  max-width: 600px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+}
+/* .attack2 > button {
+  margin-left: 10px;
+} */
+
+.heal{
+  font-size: large;
+  margin-top: 5px;
+  margin-left: 100px;
+  color: black;
+  max-width: 600px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+}
+/* .heal > button {
+  margin-left: 10px;
+} */
+
+.special {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  margin-top: 15px;
+  margin-bottom: 3vh;
+  margin-left: 17vw;
+  padding: 35px;
+  height: 70px;
+  width: 100px;
+}
+
+.countUpGreenP1 {
+  background-color: none;
+  padding: 5px;
+  color: green;
+  font-size:60pt;
+  margin-left: 17vw;
+  margin-bottom: -20vh;
+  font-family: 'Russo One', sans-serif;
+}
+.countUpRedP1 {
+  background-color: none;
+  padding: 5px;
+  color: red;
+  font-size: 60pt;
+  margin-left: 17vw;
+  margin-bottom: -20vh;
+  font-family: 'Russo One', sans-serif;
+}
+
+
+/* computer card */
+.CPUImage{
+float: right;
+height: 200px;
+width: 200px;
+margin-top: -86.5vh;
+margin-right: 15vw;
+text-align: center;
+}
+
+.CPUName{
+  float: right;
+  margin-top: -55vh;
+  margin-right: 145px;
+  color: black;
+  text-align: center;
+  font-size: 30px;
+  max-width: 500px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+}
+
+.CPUBio{
+  float: right;
+  color: black;
+  margin-top: -50vh;
+  margin-right: 145px;
+  text-align: right;
+  max-width: 350px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+  font-size: large;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  /* border-bottom: 1px solid black; */
+}
+
+.CPUAttack1{
+  float: right;
+  color: black;
+  margin-top: -43vh;
+  margin-right: 145px;
+  font-size: large;
+  max-width: 400px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+}
+/* .CPUAttack1 > button {
+  margin-left: 15px;
+} */
+
+.CPUAttack2{
+  float: right;
+  color: black;
+  margin-top: -38vh;
+  margin-right: 145px;
+  font-size: large;
+  max-width: 400px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+} 
+/* .CPUAttack2 > button {
+  margin-left: 15px;
+} */
+
+.CPUHeal{
+  float: right;
+  color: black;
+  margin-top: -33vh;
+  margin-right: 145px;
+  font-size: large;
+  max-width: 400px;
+  max-height: 80px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+} 
+/* .CPUHeal > button {
+  margin-right: 15px;
+} */
+
+
+.countUpRedCPU {
+  color: red;
+  font-size:60pt;
+  background-color: none;
+    margin-top: -12vh;
+    margin-right: 250px;
+    float: right;
+    border: 2px solid none;
+    font-family: 'Russo One', sans-serif;
+    padding: 5px;
+} 
+
+.countUpGreenCPU {
+  color: green;
+  font-size:60pt;
+  background-color: none;
+    margin-top: -12vh;
+    margin-right: 250px;
+    float: right;
+    border: 2px solid none;
+    font-family: 'Russo One', sans-serif;
+    padding: 5px;
+}
+
+
+.gif {
+  margin-left: 600px;
+  margin-bottom: 250px;
+  margin-top: -450px;
+  color: black;
+  width: 200px;
+  height: 200px;
+}
+
+.countUpGreenCPU{
+  color: green;
+  background-color: none;
+}
+
+.results{
+  text-align: center;
+  font-size: 30pt;
+  
+}
+
+.resultsbutton{
+  display: flex;
+  justify-content: center;
+  margin-left: 650px;
+  padding: 15px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.resultsgif{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  width: 50%;
+  height: 200px;
+  width: 100px;
+}
+/* 
+.special2 {
+  border: solid red 4px;
+  margin-top: -900px;
+  margin-bottom: -5vh;
+} */
+
+.CImage {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  float: right;
+  margin-top: -86vh;
+  margin-right: 15vw;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+}
+
+/* .CAttackOne {
+  height: 20px;
+  width: 250px;
+  float: right;
+  margin-top: -25vh;
+  margin-right: 15vw;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+
+}
+
+.CHeal {
+  height: 20px;
+  width: 250px;
+  float: right;
+  margin-top: -25vh;
+  margin-right: 15vw;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+
+} */
+
+.CGif {
+  margin-left: 600px;
+  margin-bottom: 260px;
+  margin-top: -180px;
+  color: black;
+  width: 200px;
+  height: 100px;
+
+}
+
+.CButton {
+    font-family: 'Russo One', sans-serif;
+    font-size: xx-large;
+    padding: 15px;
+    width: auto;
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+
+.CCountUpGreen {
+  padding: 5px;
+  color: green;
+  font-size:60pt;
+  margin-top: 100px;
+  /* margin-left: 200px; */
+  /* margin-top: 200px; */
+  /* margin-bottom: -40vh; */
+  font-family: 'Russo One', sans-serif;
+}
+.CCountUpRed {
+  padding: 5px;
+  color: red;
+  font-size: 60pt;
+  /* margin-left: 17vw; */
+  /* margin-bottom: -20vh; */
+  font-family: 'Russo One', sans-serif;
+}
+
+.CPlayerCountUp {
+  /* margin-left: 200vw;
+  border: red 5px solid; */
+
+}
